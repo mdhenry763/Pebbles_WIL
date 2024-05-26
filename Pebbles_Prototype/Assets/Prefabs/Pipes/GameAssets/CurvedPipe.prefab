@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6930010012333166223}
   m_Layer: 0
   m_Name: CurvedPipe
-  m_TagString: Untagged
+  m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,11 +115,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: CurvedPipeVisual
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 50bd882a111a7014da8ae258dc346330,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pipe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 50bd882a111a7014da8ae258dc346330,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4122906492836891589}
   m_SourcePrefab: {fileID: 100100000, guid: 50bd882a111a7014da8ae258dc346330, type: 3}
+--- !u!1 &3666523997003994825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50bd882a111a7014da8ae258dc346330,
+    type: 3}
+  m_PrefabInstance: {fileID: 4477552161841179544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4122906492836891589
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666523997003994825}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8379586099967122088, guid: 50bd882a111a7014da8ae258dc346330, type: 3}
 --- !u!4 &4155077027179662451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50bd882a111a7014da8ae258dc346330,
