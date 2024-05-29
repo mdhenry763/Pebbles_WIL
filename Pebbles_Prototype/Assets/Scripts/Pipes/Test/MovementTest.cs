@@ -29,7 +29,7 @@ public class MovementTest : MonoBehaviour
         _composer = _cinemachineCam.GetCinemachineComponent<CinemachineComposer>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         HandleMouseLook();
     }
@@ -114,6 +114,7 @@ public class MovementTest : MonoBehaviour
     public void EnableInput()
     {
         input.actions.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnDrawGizmos()
