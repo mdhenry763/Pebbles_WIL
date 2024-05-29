@@ -41,11 +41,11 @@ Material:
     - _Fill: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WobbleX: -0
+    - _WobbleX: 0
     - _WobbleZ: 0
     m_Colors:
-    - _SlideColour: {r: 0.013207495, g: 0.948128, b: 1, a: 1}
-    - _TopColour: {r: 0.016212158, g: 0.7416717, b: 0.78113204, a: 1}
+    - _SlideColour: {r: 0.14930783, g: 0.088679194, b: 1, a: 1}
+    - _TopColour: {r: 0.07665059, g: 0.03160547, b: 0.7283019, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8491395887552635027
 MonoBehaviour:
