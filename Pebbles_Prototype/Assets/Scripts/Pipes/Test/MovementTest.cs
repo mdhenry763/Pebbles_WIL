@@ -1,24 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementTest : MonoBehaviour
 {
+    public PlayerInput input;
     public Rigidbody playerRB;
     public float playerSpeed = 8f;
     public float rotateSpeed = 5f;
     public float jumpForce = 200f;
+    public float mouseSensitivity = 100f;
 
     public LayerMask fireLayer;
+    public CinemachineVirtualCamera _cinemachineCam;
 
     private Vector3 _moveInput = Vector3.zero;
     private Camera _mainCam;
+    private float _rotationX = 0f;
+    private CinemachineComposer _composer;
 
     private void Awake()
     {
         _mainCam = Camera.main;
+        Cursor.lockState = CursorLockMode.Locked;
+        _composer = _cinemachineCam.GetCinemachineComponent<CinemachineComposer>();
+    }
+
+    private void Update()
+    {
+        HandleMouseLook();
     }
 
     private void FixedUpdate()
@@ -30,7 +43,7 @@ public class MovementTest : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        bool hit = Physics.Raycast(pos, Vector3.down, 1f);
+        bool hit = Physics.Raycast(pos, Vector3.down, 1.5f);
 
         return hit;
     }
@@ -59,18 +72,48 @@ public class MovementTest : MonoBehaviour
         if (Physics.Raycast(mousePos, out hit, 100f, fireLayer))
         {
             Debug.Log($"Hit other {hit.collider.name}");
+            hit.transform.GetComponent<PipeManager>().RotatePipe();
         }
     }
 
     private void HandleMovementAndRotation()
     {
-        Vector3 moveDir = transform.forward * _moveInput.z;
-
-        playerRB.velocity = moveDir * playerSpeed;
-
-        Vector3 rotation = new Vector3(0, _moveInput.x, 0) * rotateSpeed;
+        if(!IsGrounded()) return;
         
-        transform.Rotate(rotation);
+        Vector3 moveDir = (transform.forward * _moveInput.z) + (transform.right * _moveInput.x);
+        moveDir.y = playerRB.velocity.y;
+        playerRB.velocity = moveDir * playerSpeed ;
+    }
+
+    public float upDownSensitivity = 0.2f;
+    
+    private void HandleMouseLook()
+    {
+        Vector2 mouseInput = Mouse.current.delta.ReadValue();
+        float mouseX = mouseInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = mouseInput.y * mouseSensitivity * Time.deltaTime;
+
+        _rotationX -= mouseY;
+        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
+
+        transform.Rotate(Vector3.up * mouseX);
+
+        if (_composer != null)
+        {
+            _composer.m_TrackedObjectOffset.y = -_rotationX * upDownSensitivity;
+        }
+        //_mainCam.transform.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
+    }
+
+    public void DisableInput()
+    {
+        input.actions.Disable();
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void EnableInput()
+    {
+        input.actions.Enable();
     }
 
     private void OnDrawGizmos()
