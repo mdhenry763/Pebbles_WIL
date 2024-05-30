@@ -15,22 +15,23 @@ public class EnemyHit : EnemyHealth
     void Start()
     {
         this.currentHealth = maxHealth;
-        Enemy_Hit = GetComponent<AudioSource>();
+      //  Enemy_Hit = GetComponent<AudioSource>();
         scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper");
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            // EnemySpawner.spawnedObjects.Remove(this.gameObject);
+             EnemySpawner.spawnedObjects.Remove(this.gameObject);
 
             //gameObject.GetComponent<EnemyHealth>();
             int temp = gameObject.GetComponent<EnemyHealth>().getCurrentHealth();
             if (temp == 0)
             {
+                
                 Debug.Log("Hir");
                 Destroy(collision.gameObject);
-                scoreKeeper.GetComponent<Score>().IncreaseScore();
+               // scoreKeeper.GetComponent<Score>().IncreaseScore();
                 Destroy(gameObject);
                 
             }

@@ -9,6 +9,7 @@ TagManager:
   - BackWall
   - Bullet
   - Wall
+  - ScoreKeeper
   layers:
   - Default
   - TransparentFX

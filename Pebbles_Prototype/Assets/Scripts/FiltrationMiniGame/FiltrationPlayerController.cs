@@ -21,7 +21,7 @@ public class FiltrationPlayerController : MonoBehaviour
 
         float z = Input.GetAxis("Vertical");
         
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right  * x + transform.forward * z;
 
         _Controller.Move(move * speed * Time.deltaTime);
     }
