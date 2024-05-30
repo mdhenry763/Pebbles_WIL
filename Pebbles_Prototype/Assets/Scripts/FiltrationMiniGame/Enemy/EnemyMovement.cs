@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody _RigBodyComp;
-    public AudioSource GnomeSound;
+    //public AudioSource GnomeSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,10 @@ public class EnemyMovement : MonoBehaviour
     {
         _RigBodyComp.velocity = new Vector3(_RigBodyComp.velocity.x, _RigBodyComp.velocity.y, -10);
 
-        if (!GnomeSound.isPlaying)
+       /* if (!GnomeSound.isPlaying)
         {
-            StartCoroutine(enemysound());
-        }
+           StartCoroutine(enemysound());
+        }*/
 
         yield return null;      
 

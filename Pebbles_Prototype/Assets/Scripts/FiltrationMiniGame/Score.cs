@@ -2,24 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    public int currentScore;
-    public TMP_Text scoreDisplay;
+    public int currentScore, maxTime = 100, currentTime;
+    public TMP_Text scoreDisplay, time;
     // Start is called before the first frame update
     void Start()
     {
-        currentScore = 0;
+        currentTime = maxTime;
+        currentScore = 100;
         scoreDisplay.text = "Score: " + currentScore.ToString();
+        StartCoroutine("Timer");
     }
 
-    public void IncreaseScore()
+    IEnumerator Timer()
     {
-        currentScore = currentScore + 1;
+        while (true)
+        {
+            currentTime--;
+            if (currentTime <= 0)
+            {
+                EndFiltration();
+            }
+            yield return new WaitForSeconds(1);
+        }
+    }
+    
+    public void DecreaseScore()
+    {
+        currentScore = currentScore - 10;
         updateScore(currentScore);
     }
 
+    public void EndFiltration()
+    {
+        StopCoroutine("Timer");
+        SceneManager.LoadScene(1);
+    }
     public void updateScore(int currentScore)
     {
         scoreDisplay.text = "Score: " + currentScore.ToString();
@@ -28,6 +51,6 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time.text = "Time: " + currentTime;
     }
 }

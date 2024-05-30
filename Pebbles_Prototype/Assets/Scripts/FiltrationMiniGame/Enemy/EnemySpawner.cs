@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public  GameObject enemyType2;
     public GameObject enemyType3;
     public GameObject[] enemies;
-    public GameObject[] spawnPositions = new GameObject[4];
+    public GameObject[] spawnPositions = new GameObject[7];
 
     public GameObject Player;
     public enum lanes { First, Second, Third };
@@ -40,23 +40,23 @@ public class EnemySpawner : MonoBehaviour
             int objToSpwn = Random.Range(0, enemies.Length);
             int spawnRate = Random.Range(1, 4);
 
-            int lane = Random.Range(0, 5);
+            int spawnPoint = Random.Range(0, spawnPositions.Length);
 
             //Generates apropriate spawn position based on randomly selected lane and object prefab
-            if (lane == 1 && objToSpwn == 0)
+            if (spawnPoint == 0 && objToSpwn == 0)
             {
 
                 spawnPosition = spawnPositions[0].transform.position;
             }
-            else if (lane == 2 && objToSpwn == 0)
+            else if (spawnPoint == 1 && objToSpwn == 0)
             {
                 spawnPosition = spawnPositions[1].transform.position;
             }
-            else if (lane == 3 && objToSpwn == 0)
+            else if (spawnPoint == 2 && objToSpwn == 0)
             {
                 spawnPosition = spawnPositions[2].transform.position;
             }
-            else if (lane == 4 && objToSpwn == 0)
+            else if (spawnPoint == 3 && objToSpwn == 0)
             {
                 spawnPosition = spawnPositions[3].transform.position;
             }
