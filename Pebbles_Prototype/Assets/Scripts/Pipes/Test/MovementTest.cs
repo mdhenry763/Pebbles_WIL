@@ -7,25 +7,27 @@ using UnityEngine.InputSystem;
 
 public class MovementTest : MonoBehaviour
 {
+    [Header("References: ")]
     public Camera playerCamera;
+    public PlayerInput input;
+    public GameObject wrenchie;
+    
+    [Header("Settings: ")]
     public float jumpPower = 7f;
     public float gravity = 10f;
-    
-    public PlayerInput input;
     public float playerSpeed = 8f;
     public float mouseSensitivity = 100f;
-    
-    float rotationX = 0;
-
-    public bool canMove = true;
-
     public LayerMask fireLayer;
-
+    
+    [Header("Debug")]
+    public bool canMove = true;
+    
     private Vector3 _moveInput = Vector3.zero;
     private Camera _mainCam;
-    private float _rotationX = 0f;
+    float rotationX = 0;
     
     CharacterController characterController;
+    private Vector3 moveDirection;
 
     private void Awake()
     {
@@ -34,23 +36,34 @@ public class MovementTest : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        moveDirection = Vector3.zero;
     }
 
     private void LateUpdate()
     {
-        HandleMouseLook();
+        Debug.Log(IsGrounded());
+        
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if(!canMove) return;
+        HandleMouseLook();
         HandleMovementAndRotation();
+
+        if (!IsGrounded())
+        {
+            moveDirection.y -= gravity * Time.deltaTime;
+        }
+
+        characterController.Move(moveDirection * Time.deltaTime);
     }
 
     private bool IsGrounded()
     {
         Vector3 pos = transform.position;
 
-        bool hit = Physics.Raycast(pos, Vector3.down, 1.5f);
+        bool hit = Physics.Raycast(pos, Vector3.down, 1.25f);
 
         return hit;
     }
@@ -63,9 +76,10 @@ public class MovementTest : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (characterController.isGrounded)
+        if (IsGrounded() && canMove)
         {
-            characterController.Move(new Vector3(0, jumpPower, 0));
+            Debug.Log("Jumping");
+            moveDirection.y = jumpPower;
         }
     }
 
@@ -89,18 +103,12 @@ public class MovementTest : MonoBehaviour
         if(!canMove) return;
         
         Vector3 moveDir = (transform.forward * _moveInput.z) + (transform.right * _moveInput.x);
-        characterController.Move(moveDir * playerSpeed);
+        moveDirection.x = moveDir.x * playerSpeed;
+        moveDirection.z = moveDir.z * playerSpeed;
     }
     
     private void HandleMouseLook()
     {
-        // Vector2 mouseInput = Mouse.current.delta.ReadValue();
-        // float mouseX = mouseInput.x * mouseSensitivity * Time.deltaTime;
-        // float mouseY = mouseInput.y * mouseSensitivity * Time.deltaTime;
-        //
-        // _rotationX -= mouseY;
-        // _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
-        
         if(!canMove) return;
 
         Vector2 mouseInput = Mouse.current.delta.ReadValue();
@@ -114,6 +122,7 @@ public class MovementTest : MonoBehaviour
 
     public void DisableInput()
     {
+        Debug.Log("Disable Movement");
         canMove = false;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -124,10 +133,15 @@ public class MovementTest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void ActivateWrenchie()
+    {
+        wrenchie.SetActive(true);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1.225f);
     }
 }

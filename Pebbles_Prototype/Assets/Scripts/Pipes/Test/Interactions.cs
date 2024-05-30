@@ -47,11 +47,11 @@ public class Interactions : MonoBehaviour
         
         UIMenu.SetActive(_isMenuOpen);
         
-        // if(_isMenuOpen) onUIMenuOpen?.Invoke();
-        // else
-        // {
-        //     onUIMenuClose?.Invoke();
-        // }
+        if(_isMenuOpen) onUIMenuOpen?.Invoke();
+        else
+        {
+            onUIMenuClose?.Invoke();
+        }
     }
 
     public void Escape(InputAction.CallbackContext context)
@@ -60,11 +60,11 @@ public class Interactions : MonoBehaviour
         
         PauseMenu.SetActive(_isPauseMenuOpen);
         
-        // if(_isPauseMenuOpen) onUIMenuOpen?.Invoke();
-        // else
-        // {
-        //     onUIMenuClose?.Invoke();
-        // }
+        if(_isPauseMenuOpen) onUIMenuOpen?.Invoke();
+        else
+        {
+            onUIMenuClose?.Invoke();
+        }
     }
     
     

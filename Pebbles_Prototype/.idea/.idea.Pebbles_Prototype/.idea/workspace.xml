@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Shaders/LiquidShaderMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Shaders/LiquidShaderMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Shaders/LiquidShader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Shaders/LiquidShader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/CurvedPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/CurvedPipe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/LongStraightPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/LongStraightPipe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ShortStraightPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ShortStraightPipe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ValvePipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ValvePipe.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/WrenchieUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/WrenchieUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,26 +39,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Michael&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Michael",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\mdhen\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mdhen\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.30f1\Editor\Unity.exe" />
@@ -106,6 +113,7 @@
       <workItem from="1716917863721" duration="598000" />
       <workItem from="1716976121107" duration="6813000" />
       <workItem from="1717007350674" duration="2420000" />
+      <workItem from="1717096543211" duration="6872000" />
     </task>
     <servers />
   </component>
@@ -113,6 +121,11 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

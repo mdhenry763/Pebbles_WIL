@@ -17,6 +17,9 @@ public class PipeManager : MonoBehaviour
     public UnityEvent onPipeConnected;
     public UnityEvent onPipeDisconnected;
 
+    public bool moveInstead;
+    public Vector3[] movePositions;
+
     private void OnEnable()
     {
         //pipeEvents.OnPipeMoved += CheckPipeConnection;
@@ -70,9 +73,24 @@ public class PipeManager : MonoBehaviour
        // }
         
     }
-
+    
+    int pos = 0;
+    
     public void RotatePipe()
     {
+        if (moveInstead)
+        {
+           transform.position = movePositions[pos];
+           pos++;
+
+           if (pos > movePositions.Length - 1)
+           {
+               pos = 0;
+           }
+           
+           return;
+        }
+        
         transform.Rotate(rotation);
         CheckPipeConnection();
     }

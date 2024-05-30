@@ -240,7 +240,7 @@
                 "m_Node": {
                     "m_Id": "761f3a644fb44b5c89d4d90708c7e915"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 3
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -1237,7 +1237,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": -1.2000000476837159,
-        "y": 1.0
+        "y": 2.0
     },
     "m_DefaultValue": {
         "x": 0.0,

@@ -15,6 +15,12 @@ public class WrenchieUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             wrenchieUI.SetActive(true);
+
+            if (other.TryGetComponent<MovementTest>(out var test))
+            {
+                test.DisableInput();
+                test.ActivateWrenchie();
+            }
         }
     }
 
@@ -23,6 +29,11 @@ public class WrenchieUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             wrenchieUI.SetActive(false);
+            
+            if (other.TryGetComponent<MovementTest>(out var test))
+            {
+                test.EnableInput();
+            }
         }
     }
 
