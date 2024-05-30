@@ -55,13 +55,7 @@ public class EnemyHealth : MonoBehaviour
         this.damage = damage;
     }
 
-    /*public EnemyHealth( int MaxHP, int Damage, int moveSpeed) 
-    {
-        this.maxHealth = MaxHP;
-        this.currentHealth = MaxHP;
-        this.damage = Damage;
-        this.moveSpeed = moveSpeed;
-    }*/
+   
     // Start is called before the first frame update
     void Start()
     {
