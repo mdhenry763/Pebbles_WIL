@@ -9,20 +9,20 @@ public class EnemySpawner : MonoBehaviour
     public  GameObject enemyType2;
     public GameObject enemyType3;
     public GameObject[] enemies;
-    public GameObject[] spawnPositions = new GameObject[7];
+    public GameObject[] spawnPositions = new GameObject[6];
 
     public GameObject Player;
-    public enum lanes { First, Second, Third };
+   // public enum lanes { First, Second, Third };
     public Vector3 spawnPosition;
     public static List<GameObject> spawnedObjects = new List<GameObject>();
 
     // Update is called once per frame
-    public void Awake()
+    public void Start()
     {
         
         spawnedObjects = new List<GameObject>();
         StartCoroutine(SpawnObject());
-
+        spawnPosition = spawnPositions[1].transform.position;
     }
 
     void Update()
@@ -67,88 +67,53 @@ public class EnemySpawner : MonoBehaviour
                 if (obj == null)
                 {
 
-                    int temp = Random.Range(0, 4);
+                    int temp = Random.Range(0, 6);
                     spawnPosition = spawnPositions[temp].transform.position;
                   //  EnemyHealth newSceneObject = Instantiate(enemies[objToSpwn], spawnPosition, Quaternion.identity);
                   //  spawnedObjects.Add(newSceneObject);
                 }
-               /* if (obj.transform.position.z == spawnPosition.z)
-
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(40, 70));
-                }
-                if (obj.transform.position.z > spawnPosition.z && obj.transform.position.z < spawnPosition.z + 10)
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(40, 70));
-                }
-                if (obj.transform.position.z < spawnPosition.z && obj.transform.position.z > spawnPosition.z - 10)
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(40, 70));
-
-                }*/
+              
 
             }
-
-          /*  foreach (var obj in PickUpSpawn.spawnedPickUps)
-            {
-                if (obj == null)
-                {
-                    spawnPosition = new Vector3(0.63f, 0, (Player.transform.position.z + 40));
-                    GameObject newSceneObject = Instantiate(PickUpSpawn.spawnedPickUps[objToSpwn], spawnPosition, Quaternion.identity);
-                    PickUpSpawn.spawnedPickUps.Add(newSceneObject);
-                }
-                if (obj.transform.position.z == spawnPosition.z)
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(15, 25));
-                }
-                if (obj.transform.position.z > spawnPosition.z && obj.transform.position.z < spawnPosition.z + 10)
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(15, 25));
-                }
-                if (obj.transform.position.z < spawnPosition.z && obj.transform.position.z > spawnPosition.z - 10)
-                {
-                    spawnPosition.z = spawnPosition.z + (Player.transform.position.z + Random.Range(15, 25));
-                }
-            }*/
-            //Instantiates a new object at the final spawn position
-            if(objToSpwn == 0)
-            {
-                GameObject newObject = enemyType1;
-                newObject.GetComponent<EnemyHealth>();//lightEnemy.Instantiate(enemies[objToSpwn], spawnPosition, Quaternion.identity);
-                
-                newObject.GetComponent<EnemyHealth>().setMaxHealth(1);
-                newObject.GetComponent<EnemyHealth>().setDamage(1);
-                newObject.GetComponent<EnemyHealth>().setMoveSpeed(15);
-                Instantiate(newObject, spawnPosition, Quaternion.identity);
-
-
-
-                spawnedObjects.Add(newObject);
-            }
-            if (objToSpwn == 1)
-            {
-                GameObject newObject = enemyType2;
-               
-                newObject.GetComponent<EnemyHealth>().setMaxHealth(2);
-                newObject.GetComponent<EnemyHealth>().setDamage(1);
-                newObject.GetComponent<EnemyHealth>().setMoveSpeed(10);
-                Instantiate(newObject, spawnPosition, Quaternion.identity);
-                spawnedObjects.Add(newObject);
-            }
-            if (objToSpwn == 2)
-            {
-                GameObject newObject = enemyType3;
-                
-                
-                newObject.GetComponent<EnemyHealth>().setMaxHealth(3);
-                newObject.GetComponent<EnemyHealth>().setDamage(1);
-                newObject.GetComponent<EnemyHealth>().setMoveSpeed(7);
-                Instantiate(newObject, spawnPosition, Quaternion.identity);
-                spawnedObjects.Add(newObject);
-            }
-
-            //Adds the spawned object to the list of spawned objects
             
+                //Instantiates a new object at the final spawn position
+                if(objToSpwn == 0)
+                {
+                    GameObject newObject = enemyType1;
+                    newObject.GetComponent<EnemyHealth>();//lightEnemy.Instantiate(enemies[objToSpwn], spawnPosition, Quaternion.identity);
+                    
+                    newObject.GetComponent<EnemyHealth>().setMaxHealth(1);
+                    newObject.GetComponent<EnemyHealth>().setDamage(1);
+                    newObject.GetComponent<EnemyHealth>().setMoveSpeed(15);
+                    Instantiate(newObject, spawnPosition, Quaternion.identity);
+
+
+
+                    spawnedObjects.Add(newObject);
+                }
+                
+                if (objToSpwn == 1)
+                {
+                    GameObject newObject = enemyType2;
+                   
+                    newObject.GetComponent<EnemyHealth>().setMaxHealth(2);
+                    newObject.GetComponent<EnemyHealth>().setDamage(1);
+                    newObject.GetComponent<EnemyHealth>().setMoveSpeed(10);
+                    Instantiate(newObject, spawnPosition, Quaternion.identity);
+                    spawnedObjects.Add(newObject);
+                }
+                
+                if (objToSpwn == 2)
+                {
+                    GameObject newObject = enemyType3;
+                    
+                    
+                    newObject.GetComponent<EnemyHealth>().setMaxHealth(3);
+                    newObject.GetComponent<EnemyHealth>().setDamage(1);
+                    newObject.GetComponent<EnemyHealth>().setMoveSpeed(7);
+                    Instantiate(newObject, spawnPosition, Quaternion.identity);
+                    spawnedObjects.Add(newObject);
+                }
 
             i++;
             yield return new WaitForSeconds(spawnRate);
