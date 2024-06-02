@@ -246,6 +246,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3891708049203351638}
   - component: {fileID: 2644996709047500873}
+  - component: {fileID: 7215703648181729254}
+  - component: {fileID: 7857449725405136505}
   m_Layer: 0
   m_Name: ValvePipe
   m_TagString: Pipe
@@ -285,12 +287,41 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.97, y: 1, z: 1.5}
   m_Center: {x: 0, y: -0.99, z: 0}
+--- !u!114 &7215703648181729254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160142093689027861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018ec0fe19d4acf4895da8b937273563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsConnected: 1
+  PipeType: 0
+  ConnectedTo: {fileID: 0}
+--- !u!114 &7857449725405136505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160142093689027861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de6feb535194d44c9837a587613d9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionType: 0
+  valveUnlocked: 0
 --- !u!1001 &2705578637655265412
 PrefabInstance:
   m_ObjectHideFlags: 0

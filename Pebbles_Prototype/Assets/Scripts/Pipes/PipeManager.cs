@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 
 public class PipeManager : MonoBehaviour
 {
-    [SerializeField] private PipeEvents pipeEvents;
     [SerializeField] private Transform connectionCheckPoint1;
     [SerializeField] private Transform connectionCheckPoint2;
     [SerializeField] private LayerMask layerMask;
@@ -20,9 +19,11 @@ public class PipeManager : MonoBehaviour
     public bool moveInstead;
     public Vector3[] movePositions;
 
-    private void OnEnable()
+    private PipeC _pipe;
+
+    private void Start()
     {
-        //pipeEvents.OnPipeMoved += CheckPipeConnection;
+        _pipe = GetComponent<PipeC>();
     }
 
     private void Update()
@@ -30,22 +31,16 @@ public class PipeManager : MonoBehaviour
         Debug.DrawRay(connectionCheckPoint1.position, connectionCheckPoint1.forward * 1, Color.red);
         Debug.DrawRay(connectionCheckPoint2.position, connectionCheckPoint2.forward * 1, Color.green);
        // Debug.DrawLine(connectionCheckPoint1.position, connectionCheckPoint1.forward * 100, Color.red);
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("Q pressed");
-            CheckPipeConnection();
-        }
     }
 
     private void CheckPipeConnection()
     {
         bool pipeConnected;
         
-        Debug.Log("Raycasting");
+        Debug.Log("Ray casting");
         //First check
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(connectionCheckPoint1.position, connectionCheckPoint1.forward, out var firstHit, 1, layerMask))
+        if (Physics.Raycast(connectionCheckPoint1.position, connectionCheckPoint1.forward, out var firstHit, 3, layerMask))
         {
             Debug.DrawRay(connectionCheckPoint1.position, connectionCheckPoint1.forward * firstHit.distance, Color.red);
             Debug.Log("First Hit");
@@ -66,11 +61,12 @@ public class PipeManager : MonoBehaviour
             pipeConnected = false;
         }
         
-        //if(pipeConnected) onPipeConnected?.Invoke();
-        //else
-        //{
-        //    onPipeDisconnected?.Invoke();
-       // }
+        
+        if(pipeConnected) onPipeConnected?.Invoke();
+        else
+        {
+            _pipe.ChangePipeConnection();
+        }
         
     }
     
@@ -80,14 +76,19 @@ public class PipeManager : MonoBehaviour
     {
         if (moveInstead)
         {
-           transform.position = movePositions[pos];
-           pos++;
+            _pipe.ChangePipeConnection();
 
-           if (pos > movePositions.Length - 1)
-           {
-               pos = 0;
-           }
-           
+            if (transform.position == movePositions[pos])
+            {
+                pos++;
+            }
+            
+            if (pos > movePositions.Length - 1)
+            {
+                pos = 0;
+               
+            }
+            transform.position = movePositions[pos];
            return;
         }
         

@@ -17,6 +17,7 @@ public class MovementTest : MonoBehaviour
     public float gravity = 10f;
     public float playerSpeed = 8f;
     public float mouseSensitivity = 100f;
+    public LayerMask jumpLayer;
     public LayerMask fireLayer;
     
     [Header("Debug")]
@@ -34,7 +35,6 @@ public class MovementTest : MonoBehaviour
         _mainCam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         moveDirection = Vector3.zero;
     }
@@ -62,10 +62,18 @@ public class MovementTest : MonoBehaviour
     private bool IsGrounded()
     {
         Vector3 pos = transform.position;
+        Vector3 leftSide = new Vector3(pos.x - 0.5f, pos.y , pos.z);
+        Vector3 rightSide = new Vector3(pos.x + 0.5f, pos.y , pos.z);
+        Vector3 topSide = new Vector3(pos.x , pos.y , pos.z - 0.5f);
+        Vector3 bottomSide = new Vector3(pos.x, pos.y , pos.z + 0.5f);
 
-        bool hit = Physics.Raycast(pos, Vector3.down, 1.25f);
+        bool hitLeft = Physics.Raycast(leftSide, Vector3.down, 1.25f, jumpLayer);
+        bool hit = Physics.Raycast(pos, Vector3.down, 1.25f, jumpLayer);
+        bool hitRight = Physics.Raycast(rightSide, Vector3.down, 1.25f, jumpLayer);
+        bool hitTop = Physics.Raycast(topSide, Vector3.down, 1.25f, jumpLayer);
+        bool hitBottom = Physics.Raycast(bottomSide, Vector3.down, 1.25f, jumpLayer);
 
-        return hit;
+        return hit || hitLeft || hitRight || hitBottom || hitTop;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -123,6 +131,7 @@ public class MovementTest : MonoBehaviour
     public void DisableInput()
     {
         Debug.Log("Disable Movement");
+        Cursor.visible = true;
         canMove = false;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -130,6 +139,7 @@ public class MovementTest : MonoBehaviour
     public void EnableInput()
     {
         canMove = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -141,7 +151,16 @@ public class MovementTest : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        Vector3 pos = transform.position;
+        Vector3 leftSide = new Vector3(pos.x - 0.5f, pos.y , pos.z);
+        Vector3 rightSide = new Vector3(pos.x + 0.5f, pos.y , pos.z);
+        Vector3 topSide = new Vector3(pos.x , pos.y , pos.z - 0.5f);
+        Vector3 bottomSide = new Vector3(pos.x, pos.y , pos.z + 0.5f);
         
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1.225f);
+        Gizmos.DrawLine(leftSide, leftSide + Vector3.down * 1.225f);
+        Gizmos.DrawLine(rightSide, rightSide + Vector3.down * 1.225f);
+        Gizmos.DrawLine(topSide, topSide + Vector3.down * 1.225f);
+        Gizmos.DrawLine(bottomSide, bottomSide + Vector3.down * 1.225f);
     }
 }

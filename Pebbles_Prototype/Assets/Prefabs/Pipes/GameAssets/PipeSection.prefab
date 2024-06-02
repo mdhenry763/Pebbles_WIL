@@ -167,8 +167,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7451013297268786792}
   - {fileID: 6640394749099843641}
+  - {fileID: 7451013297268786792}
   - {fileID: 6729503079408015079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: -90, z: -180}
@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57e9b2994be0ae42ac0a83659e2fd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipeEvents: {fileID: 0}
   connectionCheckPoint1: {fileID: 5742883530018151122}
   connectionCheckPoint2: {fileID: 1039965418783998684}
   layerMask:
@@ -197,6 +196,8 @@ MonoBehaviour:
   onPipeDisconnected:
     m_PersistentCalls:
       m_Calls: []
+  moveInstead: 0
+  movePositions: []
 --- !u!65 &3574779763771431828
 BoxCollider:
   m_ObjectHideFlags: 0

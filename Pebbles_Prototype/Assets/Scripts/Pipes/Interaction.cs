@@ -6,12 +6,20 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public actionType InteractionType;
+    public bool valveUnlocked;
+
+    private PipeC _pipe;
+
+    private void Start()
+    {
+        _pipe = GetComponent<PipeC>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Interactions>(out var interactions))
         {
-            interactions.currentInteraction = InteractionType;
+            interactions.currentInteraction = this;
         }
     }
 
@@ -19,7 +27,16 @@ public class Interaction : MonoBehaviour
     {
         if (other.TryGetComponent<Interactions>(out var interactions))
         {
-            interactions.currentInteraction = actionType.None;
+            interactions.currentInteraction = null;
         }
+    }
+
+    public void Valve()
+    {
+        valveUnlocked = !valveUnlocked;
+        
+        _pipe.ChangePipeConnection();
+
+        Debug.Log($"Valve is locked: {valveUnlocked}");
     }
 }

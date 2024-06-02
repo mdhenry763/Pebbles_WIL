@@ -16,7 +16,8 @@ public class Interactions : MonoBehaviour
 {
     public GameObject UIMenu;
     public GameObject PauseMenu;
-    public actionType currentInteraction;
+    
+    public Interaction currentInteraction { get; set;}
 
     public UnityEvent onUIMenuOpen;
     public UnityEvent onUIMenuClose;
@@ -26,11 +27,14 @@ public class Interactions : MonoBehaviour
     
     public void Interact(InputAction.CallbackContext context)
     {
-        switch (currentInteraction)
+        if(currentInteraction == null) return;
+        
+        switch (currentInteraction.InteractionType)
         {
             case actionType.None:
                 return;
             case actionType.Valve:
+                currentInteraction.Valve();
                 //Unlock Valve
                 return;
             case actionType.Generator:
@@ -66,6 +70,9 @@ public class Interactions : MonoBehaviour
             onUIMenuClose?.Invoke();
         }
     }
-    
-    
+}
+
+public struct InteractionData
+{
+    public Interaction interaction;
 }
