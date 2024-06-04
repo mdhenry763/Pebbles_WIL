@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/New_Pipes/Blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/New_Pipes/Blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/New_Pipes/Light blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/New_Pipes/Light blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/CurvedPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/CurvedPipe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/LongStraightPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/LongStraightPipe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/PipeSection.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/PipeSection.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ShortStraightPipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ShortStraightPipe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ValvePipe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pipes/GameAssets/ValvePipe.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +108,7 @@
       <workItem from="1717096543211" duration="6872000" />
       <workItem from="1717334345663" duration="6000" />
       <workItem from="1717334369858" duration="9781000" />
+      <workItem from="1717508766864" duration="825000" />
     </task>
     <servers />
   </component>
