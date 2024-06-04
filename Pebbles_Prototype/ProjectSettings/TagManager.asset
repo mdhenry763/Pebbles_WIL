@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pipe
+  - Wall
+  - BackWall
+  - ScoreKeeper
+  - Bullet
   layers:
   - Default
   - TransparentFX
