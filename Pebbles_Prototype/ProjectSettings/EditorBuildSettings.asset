@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FiltrationMiniGame.unity
     guid: 2a9e87f9844e38749bad2bf443960948
+  - enabled: 1
+    path: Assets/Scenes/MichaelSandbox.unity
+    guid: 7ca127dfcd0f52141b04718d015241b1
   m_configObjects: {}

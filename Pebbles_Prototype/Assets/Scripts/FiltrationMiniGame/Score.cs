@@ -10,6 +10,12 @@ public class Score : MonoBehaviour
 {
     public int currentScore, maxTime = 100, currentTime;
     public TMP_Text scoreDisplay, time;
+
+    public MiniGameScore miniGameScore;
+
+    public GameObject filterGame;
+
+    public GameObject conserveGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +47,14 @@ public class Score : MonoBehaviour
     public void EndFiltration()
     {
         StopCoroutine("Timer");
-        SceneManager.LoadScene(1);
+        miniGameScore.miniGameScore = currentScore;
+        conserveGame.SetActive(true);
+        CrossSceneEvents.FireOnMiniGameFinished();
+        
     }
+    
+    
+    
     public void updateScore(int currentScore)
     {
         scoreDisplay.text = "Score: " + currentScore.ToString();

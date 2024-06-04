@@ -24,9 +24,17 @@ public class Interactions : MonoBehaviour
 
     private bool _isMenuOpen;
     private bool _isPauseMenuOpen;
-    
+
+    private bool _inputEnabled = true;
+
+    private void Start()
+    {
+        _inputEnabled = true;
+    }
+
     public void Interact(InputAction.CallbackContext context)
     {
+        if(!_inputEnabled) return;
         if(currentInteraction == null) return;
         
         switch (currentInteraction.InteractionType)
@@ -38,6 +46,7 @@ public class Interactions : MonoBehaviour
                 //Unlock Valve
                 return;
             case actionType.Generator:
+                currentInteraction.Generator();
                 //Unlock Geni
                 return;
             default:
@@ -47,6 +56,7 @@ public class Interactions : MonoBehaviour
 
     public void MenuOpenClose(InputAction.CallbackContext context)
     {
+        if(!_inputEnabled) return;
         _isMenuOpen = !_isMenuOpen;
         
         UIMenu.SetActive(_isMenuOpen);
@@ -60,6 +70,8 @@ public class Interactions : MonoBehaviour
 
     public void Escape(InputAction.CallbackContext context)
     {
+        if(!_inputEnabled) return;
+        
         _isPauseMenuOpen = !_isPauseMenuOpen;
         
         PauseMenu.SetActive(_isPauseMenuOpen);
@@ -69,6 +81,16 @@ public class Interactions : MonoBehaviour
         {
             onUIMenuClose?.Invoke();
         }
+    }
+
+    public void DisableInput()
+    {
+        _inputEnabled = false;
+    }
+
+    public void EnableInput()
+    {
+        _inputEnabled = true;
     }
 }
 

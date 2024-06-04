@@ -1,18 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TimeSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TMP_Text timeTakenText;
+    public MiniGameScore score;
+
+    private float time;
+    private bool _isTakingTime;
+
+    private void Start()
     {
-        
+        _isTakingTime = false;
+        time = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if(!_isTakingTime) return;
+
+        time += Time.deltaTime;
+        score.timeScore = 150 / time;
         
+        timeTakenText.text = $"Time: {Mathf.Floor(time)}";
+    }
+
+    public void StartTime()
+    {
+        _isTakingTime = true;
+    }
+
+    public void StopTime()
+    {
+        _isTakingTime = false;
     }
 }
