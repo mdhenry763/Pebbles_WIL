@@ -16,6 +16,7 @@ public class Interaction : MonoBehaviour
     public UnityEvent onChangingBackScene;
 
     private PipeC _pipe;
+    private bool genUsed;
 
     private void Start()
     {
@@ -59,6 +60,7 @@ public class Interaction : MonoBehaviour
 
     public void Generator()
     {
+        if(genUsed) return;
         StartCoroutine(LoadingScreenToMiniGame());
     }
 
@@ -70,11 +72,13 @@ public class Interaction : MonoBehaviour
         if(loadingScreen) loadingScreen.SetActive(false);
         
         SceneManager.LoadScene("FiltrationMiniGame", LoadSceneMode.Additive);
+        genUsed = true;
     }
 
     IEnumerator LoadingSceneToGame()
     {
         if(loadingScreen) loadingScreen.SetActive(true);
+        yield return SceneManager.UnloadSceneAsync("FiltrationMiniGame");
         yield return new WaitForSeconds(3f);
         if(loadingScreen) loadingScreen.SetActive(false);
         onChangingBackScene?.Invoke();

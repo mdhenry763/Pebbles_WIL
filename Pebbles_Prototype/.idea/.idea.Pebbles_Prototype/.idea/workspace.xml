@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/MiniGameScore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/MiniGameScore.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/CrossSceneEvents.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/CrossSceneEvents.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FiltrationMiniGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FiltrationMiniGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/Score.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +110,7 @@
       <workItem from="1717334345663" duration="6000" />
       <workItem from="1717334369858" duration="9781000" />
       <workItem from="1717508766864" duration="825000" />
+      <workItem from="1717521787219" duration="1193000" />
     </task>
     <servers />
   </component>

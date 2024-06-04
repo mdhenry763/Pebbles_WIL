@@ -44,9 +44,16 @@ public class Score : MonoBehaviour
     {
         StopCoroutine("Timer");
         miniGameScore.score = currentScore;
-        SceneManager.UnloadSceneAsync("FiltrationMiniGame");
+        StartCoroutine(UnloadFiltrationScene());
         CrossSceneEvents.FireOnMiniGameFinished();
     }
+    
+    IEnumerator UnloadFiltrationScene()
+    {
+        yield return SceneManager.UnloadSceneAsync("FiltrationMiniGame");
+    }
+    
+    
     public void updateScore(int currentScore)
     {
         scoreDisplay.text = "Score: " + currentScore.ToString();
