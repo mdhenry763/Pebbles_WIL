@@ -7,13 +7,14 @@ using UnityEngine;
 public class TimeSystem : MonoBehaviour
 {
     public TMP_Text timeTakenText;
+    public MiniGameScore score;
 
     private float time;
     private bool _isTakingTime;
 
     private void Start()
     {
-        _isTakingTime = true;
+        _isTakingTime = false;
         time = 0;
     }
 
@@ -22,8 +23,14 @@ public class TimeSystem : MonoBehaviour
         if(!_isTakingTime) return;
 
         time += Time.deltaTime;
-
+        score.timeScore = 150 / time;
+        
         timeTakenText.text = $"Time: {Mathf.Floor(time)}";
+    }
+
+    public void StartTime()
+    {
+        _isTakingTime = true;
     }
 
     public void StopTime()

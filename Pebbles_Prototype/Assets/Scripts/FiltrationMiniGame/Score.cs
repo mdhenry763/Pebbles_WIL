@@ -47,7 +47,7 @@ public class Score : MonoBehaviour
     public void EndFiltration()
     {
         StopCoroutine("Timer");
-        miniGameScore.score = currentScore;
+        miniGameScore.miniGameScore = currentScore;
         conserveGame.SetActive(true);
         CrossSceneEvents.FireOnMiniGameFinished();
         

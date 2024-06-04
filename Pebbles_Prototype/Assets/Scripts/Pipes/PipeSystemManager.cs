@@ -1,16 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PipeSystemManager : MonoBehaviour
 {
+    [Header("Pipes")]
     public Transform startingPipe;
     public Transform endPipe;
-    
     [SerializeField] private Material unconnectedMat;
     [SerializeField] private Material connectedMat;
+
+    [Header("UI")] public TMP_Text leakText;
+    public Image waterSlider;
+    public float leakageMax = 60f;
+    public TMP_Text scoreText;
+    public MiniGameScore score;
 
     [Header("Debug")] public List<Transform> pipeSystem;
     [Header("Debug")] public List<Transform> connectedPipes;
@@ -24,7 +32,10 @@ public class PipeSystemManager : MonoBehaviour
     private void Start()
     {
         GetFullPipeSystem();
-        
+        time = 0;
+        amount = 0;
+        _leakingPipe = false;
+
     }
 
     private void OnEnable()
@@ -36,13 +47,27 @@ public class PipeSystemManager : MonoBehaviour
     {
         PipeC.OnIsConnectedValueChange -= PipeCOnOnIsConnectedValueChange;
     }
-    
+
+    private void Update()
+    {
+        if (_leakingPipe)
+        {
+            time += Time.deltaTime;
+            amount = (leakageMax / time) / 10;
+            Debug.Log($"Amount {amount}");
+            waterSlider.fillAmount = amount;
+        }
+    }
+
     private void PipeCOnOnIsConnectedValueChange()
     {
         CheckPipeSystem();
     }
 
     private PipeC leakingPipe;
+    private bool _leakingPipe;
+    private float time;
+    private float amount;
     
     private void CheckPipeSystem()
     {
@@ -65,7 +90,9 @@ public class PipeSystemManager : MonoBehaviour
                 {
                     if (pipe.IsConnected)
                     {
+                        leakText.text = "";
                         leakingPipe = null;
+                        _leakingPipe = false;
                     }
                 }
                 
@@ -76,6 +103,8 @@ public class PipeSystemManager : MonoBehaviour
                         if (pipe.pipeType == PipeType.Connection)
                         {
                             leakingPipe = pipe;
+                            _leakingPipe = true;
+                            leakText.text = "Leak";
                             Debug.Log("Leakage");
                         }
                     }
@@ -106,11 +135,11 @@ public class PipeSystemManager : MonoBehaviour
 
     void CheckIfLevelComplete()
     {
-        var gameCond = _miniGameComplete && _pipeSystemComplete;
-
-
-        if (gameCond)
+        if (_miniGameComplete && _pipeSystemComplete)
         {
+            score.leakScore = amount;
+            float gameScore = (score.miniGameScore + score.timeScore + score.leakScore / 3);
+            scoreText.text = "Score: " + gameScore.ToString();
             Debug.Log("Game Over");
             onGameEnd?.Invoke();
         }
@@ -165,6 +194,7 @@ public class PipeSystemManager : MonoBehaviour
     {
         Debug.Log("Mini-Game complete");
         _miniGameComplete = true;
+        CheckIfLevelComplete();
     }
 
 

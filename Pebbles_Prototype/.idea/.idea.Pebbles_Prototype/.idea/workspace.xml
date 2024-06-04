@@ -7,10 +7,10 @@
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/MiniGameScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/MiniGameScore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FiltrationMiniGame/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/TimeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/TimeSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/PipeC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/Test/Interactions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/URP/CustomPostProcessPass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/URP/CustomPostProcessRenderFeature.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -115,7 +116,7 @@
       <workItem from="1717334369858" duration="9781000" />
       <workItem from="1717508766864" duration="825000" />
       <workItem from="1717521787219" duration="1193000" />
-      <workItem from="1717524457112" duration="3021000" />
+      <workItem from="1717524457112" duration="7461000" />
     </task>
     <servers />
   </component>

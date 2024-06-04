@@ -39,6 +39,11 @@ public class MovementTest : MonoBehaviour
         moveDirection = Vector3.zero;
     }
 
+    private void Start()
+    {
+        DisableInput();
+    }
+
     private void LateUpdate()
     {
         Debug.Log(IsGrounded());
