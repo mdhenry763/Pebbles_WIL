@@ -48,8 +48,9 @@ public class Score : MonoBehaviour
     {
         StopCoroutine("Timer");
         miniGameScore.score = currentScore;
+        conserveGame.SetActive(true);
         CrossSceneEvents.FireOnMiniGameFinished();
-        filterGame.SetActive(false);
+        
     }
     
     

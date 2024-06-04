@@ -1,18 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TimeSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TMP_Text timeTakenText;
+
+    private float time;
+    private bool _isTakingTime;
+
+    private void Start()
     {
-        
+        _isTakingTime = true;
+        time = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(!_isTakingTime) return;
+
+        time += Time.deltaTime;
+
+        timeTakenText.text = $"Time: {Mathf.Floor(time)}";
+    }
+
+    public void StopTime()
+    {
+        _isTakingTime = false;
     }
 }

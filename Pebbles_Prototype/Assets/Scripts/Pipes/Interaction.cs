@@ -18,6 +18,7 @@ public class Interaction : MonoBehaviour
 
     public UnityEvent onChangingScene;
     public UnityEvent onChangingBackScene;
+    public UnityEvent onMiniGameComplete;
 
     private PipeC _pipe;
     private bool genUsed;
@@ -71,11 +72,12 @@ public class Interaction : MonoBehaviour
     IEnumerator LoadingScreenToMiniGame()
     {
         if(loadingScreen) loadingScreen.SetActive(true);
-        filterGame.SetActive(false);
         yield return new WaitForSeconds(3f);
         onChangingScene?.Invoke();
+        filterGame.SetActive(true);
+        conserveGame.SetActive(false);
         if(loadingScreen) loadingScreen.SetActive(false);
-        conserveGame.SetActive(true);
+        
         
         genUsed = true;
     }
@@ -84,8 +86,10 @@ public class Interaction : MonoBehaviour
     {
         if(loadingScreen) loadingScreen.SetActive(true);
         conserveGame.SetActive(true);
+        filterGame.SetActive(false);
         yield return new WaitForSeconds(3f);
         if(loadingScreen) loadingScreen.SetActive(false);
         onChangingBackScene?.Invoke();
+        onMiniGameComplete?.Invoke();
     }
 }

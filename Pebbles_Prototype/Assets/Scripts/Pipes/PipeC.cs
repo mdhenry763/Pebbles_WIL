@@ -33,8 +33,31 @@ public class PipeC : MonoBehaviour
         mats[0] = IsConnected ? connectedMat : unconnectedMat; 
         meshRenderer.materials = mats;
     }
+
+    private float counter;
     
-    
+    private void Leakage()
+    {
+        if(pipeType != PipeType.Connection) return;
+        if (ConnectedTo)
+        {
+            var pipeNext = ConnectedTo.GetComponent<PipeC>();
+
+            if (IsConnected && !pipeNext.IsConnected && pipeNext.pipeType == PipeType.Connection)
+            {
+                counter += Time.deltaTime;
+                Debug.Log($"Leaking amount: {counter}");
+            }
+        }
+
+        
+        
+    }
+
+    private void Update()
+    {
+        Leakage();
+    }
 }
 
 public enum PipeType

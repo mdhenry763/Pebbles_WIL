@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PipeSystemManager : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class PipeSystemManager : MonoBehaviour
 
     [Header("Debug")] public List<Transform> pipeSystem;
     [Header("Debug")] public List<Transform> connectedPipes;
+
+    private int _pipeSystemCount;
+    private bool _miniGameComplete;
+    private bool _pipeSystemComplete;
+
+    public UnityEvent onGameEnd;
 
     private void Start()
     {
@@ -34,6 +41,8 @@ public class PipeSystemManager : MonoBehaviour
     {
         CheckPipeSystem();
     }
+
+    private PipeC leakingPipe;
     
     private void CheckPipeSystem()
     {
@@ -51,14 +60,38 @@ public class PipeSystemManager : MonoBehaviour
                 {
                     pipe.IsConnected = true;
                 }
+
+                if (pipe == leakingPipe)
+                {
+                    if (pipe.IsConnected)
+                    {
+                        leakingPipe = null;
+                    }
+                }
                 
                 if (!pipe.IsConnected)
                 {
+                    if (leakingPipe == null)
+                    {
+                        if (pipe.pipeType == PipeType.Connection)
+                        {
+                            leakingPipe = pipe;
+                            Debug.Log("Leakage");
+                        }
+                    }
+                    
                     Debug.Log($"{currentPipe.name} is not connected");
                     break;
                 }
                 pipe.ChangeColour(connectedMat, unconnectedMat);
                 connectedPipes.Add(currentPipe);
+                
+                if (connectedPipes.Count >= pipeSystem.Count-1)
+                {
+                    
+                    _pipeSystemComplete = true;
+                    CheckIfLevelComplete();
+                }
             }
 
             currentPipe = pipe.ConnectedTo;
@@ -69,6 +102,19 @@ public class PipeSystemManager : MonoBehaviour
             }
         }
         ChangePipeVisual();
+    }
+
+    void CheckIfLevelComplete()
+    {
+        var gameCond = _miniGameComplete && _pipeSystemComplete;
+
+
+        if (gameCond)
+        {
+            Debug.Log("Game Over");
+            onGameEnd?.Invoke();
+        }
+        
     }
 
     private void ChangePipeVisual()
@@ -101,6 +147,8 @@ public class PipeSystemManager : MonoBehaviour
             if (pipe.ConnectedTo != null)
             {
                 pipeSystem.Add(currentPipe);
+                _pipeSystemCount++;
+                Debug.Log($"Pipes: {_pipeSystemCount}");
             }
 
             currentPipe = pipe.ConnectedTo;
@@ -110,6 +158,13 @@ public class PipeSystemManager : MonoBehaviour
                 break;
             }
         }
+    }
+    
+    //
+    public void SetMiniGameComplete()
+    {
+        Debug.Log("Mini-Game complete");
+        _miniGameComplete = true;
     }
 
 
