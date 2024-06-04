@@ -53,7 +53,8 @@ public class PipeSystemManager : MonoBehaviour
         if (_leakingPipe)
         {
             time += Time.deltaTime;
-            amount = (leakageMax / time) / 10;
+            float remainingTime = leakageMax - time; 
+            float amount = remainingTime / leakageMax;
             Debug.Log($"Amount {amount}");
             waterSlider.fillAmount = amount;
         }
