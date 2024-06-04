@@ -2068,10 +2068,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  maxTime: 100
+  maxTime: 10
   currentTime: 0
   scoreDisplay: {fileID: 633152519}
   time: {fileID: 1869293961}
+  miniGameScore: {fileID: 11400000, guid: 9a8dfedbc3c9514478949042d8fd20b0, type: 2}
 --- !u!4 &1353599193
 Transform:
   m_ObjectHideFlags: 0
