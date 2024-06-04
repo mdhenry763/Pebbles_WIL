@@ -4,20 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - FiltrationPlayer
-  - BackWall
-  - Bullet
-  - Wall
-  - ScoreKeeper
+  - Pipe
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - groundMask
+  - Pipe
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
