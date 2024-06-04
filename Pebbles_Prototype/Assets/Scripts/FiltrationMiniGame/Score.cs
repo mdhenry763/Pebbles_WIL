@@ -12,6 +12,10 @@ public class Score : MonoBehaviour
     public TMP_Text scoreDisplay, time;
 
     public MiniGameScore miniGameScore;
+
+    public GameObject filterGame;
+
+    public GameObject conserveGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,14 +48,10 @@ public class Score : MonoBehaviour
     {
         StopCoroutine("Timer");
         miniGameScore.score = currentScore;
-        StartCoroutine(UnloadFiltrationScene());
         CrossSceneEvents.FireOnMiniGameFinished();
+        filterGame.SetActive(false);
     }
     
-    IEnumerator UnloadFiltrationScene()
-    {
-        yield return SceneManager.UnloadSceneAsync("FiltrationMiniGame");
-    }
     
     
     public void updateScore(int currentScore)

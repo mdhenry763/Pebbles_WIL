@@ -8,8 +8,12 @@ using UnityEngine.SceneManagement;
 public class Interaction : MonoBehaviour
 {
     public actionType InteractionType;
+
+    public GameObject conserveGame;
+    public GameObject filterGame;
     public GameObject loadingScreen;
     public GameObject ui;
+    
     public bool valveUnlocked;
 
     public UnityEvent onChangingScene;
@@ -67,18 +71,19 @@ public class Interaction : MonoBehaviour
     IEnumerator LoadingScreenToMiniGame()
     {
         if(loadingScreen) loadingScreen.SetActive(true);
+        filterGame.SetActive(false);
         yield return new WaitForSeconds(3f);
         onChangingScene?.Invoke();
         if(loadingScreen) loadingScreen.SetActive(false);
+        conserveGame.SetActive(true);
         
-        SceneManager.LoadScene("FiltrationMiniGame", LoadSceneMode.Additive);
         genUsed = true;
     }
 
     IEnumerator LoadingSceneToGame()
     {
         if(loadingScreen) loadingScreen.SetActive(true);
-        yield return SceneManager.UnloadSceneAsync("FiltrationMiniGame");
+        conserveGame.SetActive(true);
         yield return new WaitForSeconds(3f);
         if(loadingScreen) loadingScreen.SetActive(false);
         onChangingBackScene?.Invoke();
