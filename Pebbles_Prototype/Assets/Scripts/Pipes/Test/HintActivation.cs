@@ -6,14 +6,16 @@ using UnityEngine.Events;
 
 public class HintActivation : MonoBehaviour
 {
-    public UnityEvent<bool> onShowPlayerHint;
+    public string hint;
+    
+    public UnityEvent<string> onShowPlayerHint;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("Show Player Hint");
-            onShowPlayerHint?.Invoke(true);
+            onShowPlayerHint?.Invoke(hint);
         }
     }
 
@@ -22,7 +24,7 @@ public class HintActivation : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            onShowPlayerHint?.Invoke(false);
+            //onShowPlayerHint?.Invoke(false);
         }
     }
 }

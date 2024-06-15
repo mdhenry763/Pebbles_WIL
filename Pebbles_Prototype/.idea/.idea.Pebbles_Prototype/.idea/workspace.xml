@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="" />
+    <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/PipeSystemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/HintActivation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/HintActivation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,9 +56,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\jorda\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\jorda\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\jorda\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mdhen\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mdhen\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -116,6 +123,7 @@
       <workItem from="1717521787219" duration="1193000" />
       <workItem from="1717524457112" duration="8216000" />
       <workItem from="1718446677520" duration="4160000" />
+      <workItem from="1718476028598" duration="3080000" />
     </task>
     <servers />
   </component>

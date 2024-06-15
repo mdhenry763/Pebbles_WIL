@@ -9,16 +9,23 @@ public class Interaction : MonoBehaviour
 {
     public actionType InteractionType;
 
+    [Header("References: ")]
     public GameObject conserveGame;
     public GameObject filterGame;
     public GameObject loadingScreen;
     public GameObject ui;
+
+    [Header("Hint Message")] public string hint;
     
+    [Header("Debug: ")]
     public bool valveUnlocked;
 
     public UnityEvent onChangingScene;
     public UnityEvent onChangingBackScene;
     public UnityEvent onMiniGameComplete;
+    public UnityEvent<string> onShowHint;
+    
+    public bool GeneratorActive { get; set;}
 
     private PipeC _pipe;
     private bool genUsed;
@@ -26,6 +33,8 @@ public class Interaction : MonoBehaviour
     private void Start()
     {
         _pipe = GetComponent<PipeC>();
+
+        GeneratorActive = false;
         
         CrossSceneEvents.onMiniGameFinished += MiniGameFinished;
     }
@@ -42,6 +51,8 @@ public class Interaction : MonoBehaviour
     {
         if (other.TryGetComponent<Interactions>(out var interactions))
         {
+            
+            onShowHint?.Invoke(hint);
             interactions.currentInteraction = this;
         }
     }
@@ -66,6 +77,7 @@ public class Interaction : MonoBehaviour
     public void Generator()
     {
         if(genUsed) return;
+        if(!GeneratorActive) return;
         StartCoroutine(LoadingScreenToMiniGame());
     }
 
@@ -93,3 +105,4 @@ public class Interaction : MonoBehaviour
         onMiniGameComplete?.Invoke();
     }
 }
+

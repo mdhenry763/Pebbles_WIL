@@ -14,6 +14,11 @@ public class PipeSystemManager : MonoBehaviour
     [SerializeField] private Material unconnectedMat;
     [SerializeField] private Material connectedMat;
 
+    [Header("Generator: ")]
+    public Interaction generator;
+
+    public int numPipesTillGen;
+
     [Header("UI")] public TMP_Text leakText;
     public Image waterSlider;
     public float leakageMax = 60f;
@@ -115,6 +120,11 @@ public class PipeSystemManager : MonoBehaviour
                 }
                 pipe.ChangeColour(connectedMat, unconnectedMat);
                 connectedPipes.Add(currentPipe);
+
+                if (connectedPipes.Count >= numPipesTillGen)
+                {
+                    generator.GeneratorActive = true;
+                }
                 
                 if (connectedPipes.Count >= pipeSystem.Count-1)
                 {
@@ -178,7 +188,6 @@ public class PipeSystemManager : MonoBehaviour
             {
                 pipeSystem.Add(currentPipe);
                 _pipeSystemCount++;
-                Debug.Log($"Pipes: {_pipeSystemCount}");
             }
 
             currentPipe = pipe.ConnectedTo;

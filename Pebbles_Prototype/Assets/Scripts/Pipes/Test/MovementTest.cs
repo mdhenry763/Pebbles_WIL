@@ -44,12 +44,6 @@ public class MovementTest : MonoBehaviour
         DisableInput();
     }
 
-    private void LateUpdate()
-    {
-        Debug.Log(IsGrounded());
-        
-    }
-
     private void Update()
     {
         if(!canMove) return;
