@@ -5548,6 +5548,7 @@ MonoBehaviour:
   endPipe: {fileID: 40792895}
   unconnectedMat: {fileID: 2100000, guid: ae1dc5cd8c1d6f7498ae8a642caeb033, type: 2}
   connectedMat: {fileID: 2100000, guid: 2ef467fe3d236de43a2a30f8c928ba3f, type: 2}
+  rustMat: {fileID: 2100000, guid: a44e627c150507041a71ef172b13e2eb, type: 2}
   generator: {fileID: 831007753}
   numPipesTillGen: 6
   leakText: {fileID: 291406848}
@@ -5557,6 +5558,7 @@ MonoBehaviour:
   score: {fileID: 11400000, guid: 9a8dfedbc3c9514478949042d8fd20b0, type: 2}
   pipeSystem: []
   connectedPipes: []
+  rustRandomTime: {x: 5, y: 15}
   onGameEnd:
     m_PersistentCalls:
       m_Calls:
@@ -5607,6 +5609,21 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  onPipeRusting:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1982304767}
+        m_TargetAssemblyTypeName: WrenchieHint, Assembly-CSharp
+        m_MethodName: ShowHint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &655772840
 GameObject:

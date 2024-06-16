@@ -13,11 +13,6 @@ public class WrenchieHint : MonoBehaviour
 
     private float progress = 5;
 
-    private void Start()
-    {
-        StartCoroutine(HideImage());
-    }
-
     public void ShowHint(string hint)
     {
         StopCoroutine(HideImage());
@@ -41,7 +36,6 @@ public class WrenchieHint : MonoBehaviour
             progress -= Time.deltaTime;
 
             float alpha = (progress / 5);
-            Debug.Log($"Progress is: {alpha}");
             color.a = alpha;
             hintImage.color = color;
             yield return null;

@@ -26,6 +26,7 @@ public class Interaction : MonoBehaviour
     public UnityEvent<string> onShowHint;
     
     public bool GeneratorActive { get; set;}
+    public bool IsUsingGen { get; set;}
 
     private PipeC _pipe;
     private bool genUsed;
@@ -35,6 +36,7 @@ public class Interaction : MonoBehaviour
         _pipe = GetComponent<PipeC>();
 
         GeneratorActive = false;
+        IsUsingGen = false;
         
         CrossSceneEvents.onMiniGameFinished += MiniGameFinished;
     }
@@ -78,20 +80,25 @@ public class Interaction : MonoBehaviour
     {
         if(genUsed) return;
         if(!GeneratorActive) return;
+        IsUsingGen = true;
         StartCoroutine(LoadingScreenToMiniGame());
     }
 
     IEnumerator LoadingScreenToMiniGame()
     {
-        if(loadingScreen) loadingScreen.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        onChangingScene?.Invoke();
-        filterGame.SetActive(true);
-        conserveGame.SetActive(false);
-        if(loadingScreen) loadingScreen.SetActive(false);
+        if (!GeneratorActive)
+        {
+            if(loadingScreen) loadingScreen.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            onChangingScene?.Invoke();
+            filterGame.SetActive(true);
+            conserveGame.SetActive(false);
+            if(loadingScreen) loadingScreen.SetActive(false);
         
-        
-        genUsed = true;
+            genUsed = true;
+        }
+
+        yield return null;
     }
 
     IEnumerator LoadingSceneToGame()
@@ -103,6 +110,8 @@ public class Interaction : MonoBehaviour
         if(loadingScreen) loadingScreen.SetActive(false);
         onChangingBackScene?.Invoke();
         onMiniGameComplete?.Invoke();
+        GeneratorActive = false;
+        IsUsingGen = false;
     }
 }
 

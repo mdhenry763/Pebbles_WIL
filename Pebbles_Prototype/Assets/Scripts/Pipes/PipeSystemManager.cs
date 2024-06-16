@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PipeSystemManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PipeSystemManager : MonoBehaviour
     public Transform endPipe;
     [SerializeField] private Material unconnectedMat;
     [SerializeField] private Material connectedMat;
+    [SerializeField] private Material rustMat;
 
     [Header("Generator: ")]
     public Interaction generator;
@@ -28,11 +30,14 @@ public class PipeSystemManager : MonoBehaviour
     [Header("Debug")] public List<Transform> pipeSystem;
     [Header("Debug")] public List<Transform> connectedPipes;
 
+    [Header("Rust Mechanic: ")] public Vector2 rustRandomTime = new Vector2(10, 20);
+
     private int _pipeSystemCount;
     private bool _miniGameComplete;
     private bool _pipeSystemComplete;
 
     public UnityEvent onGameEnd;
+    public UnityEvent<string> onPipeRusting;
 
     private void Start()
     {
@@ -40,6 +45,10 @@ public class PipeSystemManager : MonoBehaviour
         time = 0;
         amount = 0;
         _leakingPipe = false;
+        _pipesConnected = false;
+        
+        //Start Rust Mechanic
+        StartCoroutine(RustMechanic());
 
     }
 
@@ -60,7 +69,6 @@ public class PipeSystemManager : MonoBehaviour
             time += Time.deltaTime;
             float remainingTime = leakageMax - time; 
             float amount = remainingTime / leakageMax;
-            Debug.Log($"Amount {amount}");
             waterSlider.fillAmount = amount;
         }
     }
@@ -74,6 +82,7 @@ public class PipeSystemManager : MonoBehaviour
     private bool _leakingPipe;
     private float time;
     private float amount;
+    private bool _pipesConnected;
     
     private void CheckPipeSystem()
     {
@@ -102,36 +111,11 @@ public class PipeSystemManager : MonoBehaviour
                     }
                 }
                 
-                if (!pipe.IsConnected)
-                {
-                    if (leakingPipe == null)
-                    {
-                        if (pipe.pipeType == PipeType.Connection)
-                        {
-                            leakingPipe = pipe;
-                            _leakingPipe = true;
-                            leakText.text = "Leak";
-                            Debug.Log("Leakage");
-                        }
-                    }
-                    
-                    Debug.Log($"{currentPipe.name} is not connected");
-                    break;
-                }
+                if (LeakingPipe(pipe, currentPipe)) break;
                 pipe.ChangeColour(connectedMat, unconnectedMat);
                 connectedPipes.Add(currentPipe);
 
-                if (connectedPipes.Count >= numPipesTillGen)
-                {
-                    generator.GeneratorActive = true;
-                }
-                
-                if (connectedPipes.Count >= pipeSystem.Count-1)
-                {
-                    
-                    _pipeSystemComplete = true;
-                    CheckIfLevelComplete();
-                }
+                PipeSystemChecking();
             }
 
             currentPipe = pipe.ConnectedTo;
@@ -142,6 +126,49 @@ public class PipeSystemManager : MonoBehaviour
             }
         }
         ChangePipeVisual();
+    }
+
+    private bool LeakingPipe(PipeC pipe, Transform currentPipe)
+    {
+        if (!pipe.IsConnected)
+        {
+            if (leakingPipe == null)
+            {
+                if (pipe.pipeType == PipeType.Connection)
+                {
+                    leakingPipe = pipe;
+                    _leakingPipe = true;
+                    leakText.text = "Leak";
+                    Debug.Log("Leakage");
+                }
+            }
+                    
+            Debug.Log($"{currentPipe.name} is not connected");
+            return true;
+        }
+
+        return false;
+    }
+
+    private void PipeSystemChecking()
+    {
+        if (connectedPipes.Count > 0) _pipesConnected = true;
+        else
+        {
+            _pipesConnected = false;
+        }
+
+        if (connectedPipes.Count >= numPipesTillGen)
+        {
+            generator.GeneratorActive = true;
+        }
+                
+        if (connectedPipes.Count >= pipeSystem.Count-1)
+        {
+                    
+            _pipeSystemComplete = true;
+            CheckIfLevelComplete();
+        }
     }
 
     void CheckIfLevelComplete()
@@ -207,5 +234,56 @@ public class PipeSystemManager : MonoBehaviour
         CheckIfLevelComplete();
     }
 
+    private bool _isPipeRusting;
+    private float _rustTimer;
+    
+    public IEnumerator RustMechanic()
+    {
+        _isPipeRusting = false;
+        _rustTimer = 0;
+        
+        float beginRustTime = Random.Range(rustRandomTime.x, rustRandomTime.y);
+        
+        while (true)
+        {
+            if (_pipesConnected && !_isPipeRusting)
+            {
+                _rustTimer += Time.deltaTime;
+                Debug.Log($"Rust Timer: {_rustTimer} | {beginRustTime}");
+
+                if (_rustTimer >= beginRustTime)
+                {
+                    //Handle Rust
+                    if(!generator.IsUsingGen) Rust();
+
+                    _rustTimer = 0;
+                    beginRustTime = Random.Range(rustRandomTime.x, rustRandomTime.y);
+                }
+
+                if (_isPipeRusting)
+                {
+                    _rustTimer = 0;
+                    break;
+                }
+                
+            }
+            
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    void Rust()
+    {
+        var pipeToRust = connectedPipes[Random.Range(1, connectedPipes.Count)];
+        var pipe = pipeToRust.GetComponent<PipeC>();
+        
+        pipe.RustPipe(rustMat);
+        onPipeRusting?.Invoke("A pipe in the system is rusting! Fix the rusting pipe by clicking on it.");
+        _isPipeRusting = true;
+
+    }
 
 }
+

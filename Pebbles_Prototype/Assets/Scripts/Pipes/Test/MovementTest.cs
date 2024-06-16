@@ -11,6 +11,7 @@ public class MovementTest : MonoBehaviour
     public Camera playerCamera;
     public PlayerInput input;
     public GameObject wrenchie;
+    public PipeSystemManager pipeSystemManager;
     
     [Header("Settings: ")]
     public float jumpPower = 7f;
@@ -101,7 +102,19 @@ public class MovementTest : MonoBehaviour
         if (Physics.Raycast(mousePos, out hit, 100f, fireLayer))
         {
             Debug.Log($"Hit other {hit.collider.name}");
-            hit.transform.GetComponent<PipeManager>().RotatePipe();
+
+            if (hit.transform.TryGetComponent<PipeManager>(out var pipeManager))
+            {
+                pipeManager.RotatePipe();
+            }
+            
+            if(hit.transform.parent.TryGetComponent<PipeC>(out var pipeC))
+            {
+                StopCoroutine(pipeSystemManager.RustMechanic());
+                pipeC.StopRust();
+               // StartCoroutine(pipeSystemManager.RustMechanic());
+            }
+            
         }
     }
 
