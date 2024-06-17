@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         _JournalManager = GameObject.FindGameObjectWithTag("JournalManager").GetComponent<JournalManager>();
-        tutorialScore = 100;
+        tutorialScore = 0;
         temperatureMiniGameScore = 0;
         level1Score = 0;
         level2Score = 0;
