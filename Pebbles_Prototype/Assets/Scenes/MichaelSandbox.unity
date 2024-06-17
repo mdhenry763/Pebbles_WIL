@@ -8303,7 +8303,7 @@ MonoBehaviour:
   filterGame: {fileID: 57068704}
   loadingScreen: {fileID: 1702353772}
   ui: {fileID: 1325130308}
-  sfxManager: {fileID: 0}
+  sfxManager: {fileID: 1477834984}
   hint: 
   valveUnlocked: 0
   onChangingScene:
