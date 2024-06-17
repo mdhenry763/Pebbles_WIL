@@ -16,11 +16,11 @@ public class JournalManager : MonoBehaviour
 
     public void UpdateJournalText()
     {
-        if (_GameManager.tutorialScore > 10 && _GameManager.tutorialScore < 50)
+        if (_GameManager.tutorialScore > 10 )
         {
             tutorialSource.text =
                 "Dams are giant walls built across rivers. They help collect and store water in huge man made lakes. This water can come from rain, melting snow, or rivers. The water in the dams can be filled with animals, dirt and other things that we don’t want to drink, so the water gets piped to a water treatment plant.";
-            if (_GameManager.tutorialScore >= 50 && _GameManager.tutorialScore < 80)
+            if (_GameManager.tutorialScore >= 50 )
             {
                 tutorialTreatment.text = 
                     "Filtration is one of the last stages of water treatment. The water is passed through many layers of different types of filters. These can be things like sand, gravel and charcoal. The small sizes of the pores can remove even microscopic particles like dust, parasites, bacteria, viruses and chemicals.";
