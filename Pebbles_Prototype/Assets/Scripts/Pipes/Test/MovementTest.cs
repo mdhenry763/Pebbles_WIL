@@ -12,6 +12,7 @@ public class MovementTest : MonoBehaviour
     public PlayerInput input;
     public GameObject wrenchie;
     public PipeSystemManager pipeSystemManager;
+    public SFXManager sfxManager;
     
     [Header("Settings: ")]
     public float jumpPower = 7f;
@@ -80,6 +81,11 @@ public class MovementTest : MonoBehaviour
     {
         Vector2 input = context.ReadValue<Vector2>();
         _moveInput = new Vector3(input.x, 0, input.y);
+
+        if (input.y != 0)
+        {
+            sfxManager.PlayWalkClip();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -106,12 +112,14 @@ public class MovementTest : MonoBehaviour
             if (hit.transform.TryGetComponent<PipeManager>(out var pipeManager))
             {
                 pipeManager.RotatePipe();
+                sfxManager.PlayPuzzleClip();
             }
             
             if(hit.transform.parent.TryGetComponent<PipeC>(out var pipeC))
             {
                 StopCoroutine(pipeSystemManager.RustMechanic());
                 pipeC.StopRust();
+                sfxManager.PlayPuzzleClip();
                // StartCoroutine(pipeSystemManager.RustMechanic());
             }
             
@@ -125,6 +133,8 @@ public class MovementTest : MonoBehaviour
         Vector3 moveDir = (transform.forward * _moveInput.z) + (transform.right * _moveInput.x);
         moveDirection.x = moveDir.x * playerSpeed;
         moveDirection.z = moveDir.z * playerSpeed;
+        
+        
     }
     
     private void HandleMouseLook()

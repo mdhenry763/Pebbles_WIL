@@ -10,6 +10,7 @@ public class WrenchieHint : MonoBehaviour
     public GameObject hintObj;
     public TMP_Text hintText;
     public Image hintImage;
+    public SFXManager sfxManager;
 
     private float progress = 5;
 
@@ -22,6 +23,8 @@ public class WrenchieHint : MonoBehaviour
         
         hintText.text = hint;
         hintObj.SetActive(true);
+        
+        sfxManager.PlayWrenchieClip();
         
         StartCoroutine(HideImage());
     }

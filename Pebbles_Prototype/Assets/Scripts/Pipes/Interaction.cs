@@ -14,6 +14,7 @@ public class Interaction : MonoBehaviour
     public GameObject filterGame;
     public GameObject loadingScreen;
     public GameObject ui;
+    public SFXManager sfxManager;
 
     [Header("Hint Message")] public string hint;
     
@@ -73,6 +74,7 @@ public class Interaction : MonoBehaviour
         valveUnlocked = !valveUnlocked;
         
         _pipe.ChangePipeConnection();
+        sfxManager.PlayValveClip();
 
         Debug.Log($"Valve is locked: {valveUnlocked}");
     }

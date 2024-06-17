@@ -7,6 +7,9 @@
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MichaelSandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/MovementTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/WrenchieHint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/WrenchieHint.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/JournalManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/SFXManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/Interaction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pipes/PipeC.cs" root0="FORCE_HIGHLIGHTING" />
