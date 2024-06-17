@@ -11,6 +11,10 @@ public class ButtonManager : MonoBehaviour
         
     }
 
+    public void UpdateJournal()
+    {
+        GameManager.Instance._JournalManager.UpdateJournalText();
+    }
     public void LoadFiltrationMiniGame()
     {
         SceneManager.LoadScene(2);
