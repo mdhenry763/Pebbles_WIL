@@ -177,6 +177,7 @@ public class PipeSystemManager : MonoBehaviour
         {
             score.leakScore = amount;
             float gameScore = (score.miniGameScore + score.timeScore + score.leakScore / 3);
+            GameManager.Instance.UpdateScore(0, gameScore);
             scoreText.text = "Score: " + gameScore.ToString();
             Debug.Log("Game Over");
             onGameEnd?.Invoke();

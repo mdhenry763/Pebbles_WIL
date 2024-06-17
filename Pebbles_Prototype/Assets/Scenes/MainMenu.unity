@@ -9166,7 +9166,7 @@ GameObject:
   - component: {fileID: 2109405695}
   m_Layer: 0
   m_Name: JournalManager
-  m_TagString: Untagged
+  m_TagString: JournalManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
