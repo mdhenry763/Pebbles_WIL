@@ -35,6 +35,7 @@ public class Interaction : MonoBehaviour
     {
         _pipe = GetComponent<PipeC>();
 
+        genUsed = false;
         GeneratorActive = false;
         IsUsingGen = false;
         
@@ -78,6 +79,7 @@ public class Interaction : MonoBehaviour
 
     public void Generator()
     {
+        
         if(genUsed) return;
         if(!GeneratorActive) return;
         IsUsingGen = true;
@@ -86,9 +88,10 @@ public class Interaction : MonoBehaviour
 
     IEnumerator LoadingScreenToMiniGame()
     {
-        if (!GeneratorActive)
+        if (GeneratorActive && !genUsed)
         {
             if(loadingScreen) loadingScreen.SetActive(true);
+            Debug.Log($"Genie used: {genUsed}| Generator Active: {GeneratorActive}| Is using gen: {IsUsingGen}");
             yield return new WaitForSeconds(3f);
             onChangingScene?.Invoke();
             filterGame.SetActive(true);
