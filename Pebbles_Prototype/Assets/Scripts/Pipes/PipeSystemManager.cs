@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -103,7 +104,7 @@ public class PipeSystemManager : MonoBehaviour
 
                 if (pipe == leakingPipe)
                 {
-                    if (pipe.IsConnected)
+                    if (pipe.IsConnected && !pipe.IsRusting)
                     {
                         leakText.text = "";
                         leakingPipe = null;
@@ -126,6 +127,7 @@ public class PipeSystemManager : MonoBehaviour
             }
         }
         ChangePipeVisual();
+        CheckForPipeRust();
     }
 
     private bool LeakingPipe(PipeC pipe, Transform currentPipe)
@@ -136,6 +138,7 @@ public class PipeSystemManager : MonoBehaviour
             {
                 if (pipe.pipeType == PipeType.Connection)
                 {
+                    if (pipe.GetComponent<PipeManager>().PipeConnected) return false;
                     leakingPipe = pipe;
                     _leakingPipe = true;
                     leakText.text = "Leak";
@@ -185,24 +188,30 @@ public class PipeSystemManager : MonoBehaviour
         
     }
 
-    private void ChangePipeVisual()
+    private void CheckForPipeRust()
     {
-        bool disconnected = false;
-        
-        foreach (var pipe in pipeSystem)
+        foreach (var pipe in connectedPipes)
         {
             var pipeC = pipe.GetComponent<PipeC>();
-            
-            if(pipeC == null) return;
 
-            if (!disconnected)
+            if (pipeC.IsRusting)
             {
-                disconnected = !pipeC.IsConnected; 
+                leakingPipe = pipeC;
+                _leakingPipe = true;
+                leakText.text = "Leak";
             }
-
-            pipeC.IsConnected = !disconnected;
-            pipeC.ChangeColour(connectedMat, unconnectedMat);
         }
+    }
+
+    private void ChangePipeVisual()
+    {
+        foreach (var pipeConnected in pipeSystem)
+        {
+            var pipe = pipeConnected.GetComponent<PipeC>();
+            pipe.IsConnected = connectedPipes.Contains(pipeConnected);
+            pipe.ChangeColour(connectedMat, unconnectedMat);
+        }
+        
     }
 
     private void GetFullPipeSystem()
@@ -250,7 +259,6 @@ public class PipeSystemManager : MonoBehaviour
             if (_pipesConnected && !_isPipeRusting)
             {
                 _rustTimer += Time.deltaTime;
-                Debug.Log($"Rust Timer: {_rustTimer} | {beginRustTime}");
 
                 if (_rustTimer >= beginRustTime)
                 {

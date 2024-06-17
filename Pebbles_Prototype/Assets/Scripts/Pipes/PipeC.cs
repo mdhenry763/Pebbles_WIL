@@ -2,16 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PipeC : MonoBehaviour
 {
     public PipeType pipeType;
     [SerializeField] private MeshRenderer meshRenderer;
     
-    public bool IsConnected;
+    [Header("Pipe State: ")]
     public Transform ConnectedTo;
-
-    private bool _isRusting;
+    public bool IsConnected;
+    public bool IsRusting;
+    
     private Material currentMaterial;
 
     public static event Action OnIsConnectedValueChange;
@@ -19,7 +21,7 @@ public class PipeC : MonoBehaviour
     private void Start()
     {
         IsConnected = false;
-        _isRusting = false;
+        IsRusting = false;
 
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         currentMaterial = meshRenderer.materials[0];
@@ -31,9 +33,16 @@ public class PipeC : MonoBehaviour
         OnIsConnectedValueChange?.Invoke();
     }
 
+    public void ChangePuzzleConnection(bool connected)
+    {
+        Debug.LogWarning("Change pipe puzzle connection to: " + connected);
+        IsConnected = connected;
+        OnIsConnectedValueChange?.Invoke();
+    }
+
     public void ChangeColour(Material connectedMat, Material unconnectedMat)
     {
-        if(_isRusting) return;
+        if(IsRusting) return;
         currentMaterial = IsConnected ? connectedMat : unconnectedMat;
         ChangePipeColour(currentMaterial);
     }
@@ -71,14 +80,16 @@ public class PipeC : MonoBehaviour
     {
         //Debug.Log($"Changing pipe colour: {IsConnected}");
         ChangePipeColour(rustMaterial);
-        _isRusting = true;
+        IsRusting = true;
+        OnIsConnectedValueChange?.Invoke();
     }
 
     public void StopRust()
     {
-        if(!_isRusting) return;
+        if(!IsRusting) return;
         ChangePipeColour(currentMaterial);
-        _isRusting = false;
+        IsRusting = false;
+        OnIsConnectedValueChange?.Invoke();
     }
 
     private void OnCollisionEnter(Collision other)

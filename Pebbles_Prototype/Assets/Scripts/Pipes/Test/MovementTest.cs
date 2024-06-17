@@ -97,8 +97,11 @@ public class MovementTest : MonoBehaviour
         }
     }
 
+    private bool cooldown;
+    
     public void OnFire(InputAction.CallbackContext context)
     {
+        if(cooldown) return;
         RaycastHit hit;
 
         //casts ray to mouse position
@@ -113,6 +116,8 @@ public class MovementTest : MonoBehaviour
             {
                 pipeManager.RotatePipe();
                 sfxManager.PlayPuzzleClip();
+                cooldown = true;
+                StartCoroutine(FireCooldown());
             }
             
             if(hit.transform.parent.TryGetComponent<PipeC>(out var pipeC))
@@ -120,10 +125,17 @@ public class MovementTest : MonoBehaviour
                 StopCoroutine(pipeSystemManager.RustMechanic());
                 pipeC.StopRust();
                 sfxManager.PlayPuzzleClip();
-               // StartCoroutine(pipeSystemManager.RustMechanic());
+                cooldown = true;
+                StartCoroutine(FireCooldown());
             }
             
         }
+    }
+
+    IEnumerator FireCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        cooldown = false;
     }
 
     private void HandleMovementAndRotation()

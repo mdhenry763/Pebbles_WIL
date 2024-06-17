@@ -20,10 +20,12 @@ public class PipeManager : MonoBehaviour
     public Vector3[] movePositions;
 
     private PipeC _pipe;
+    [field: SerializeField] public bool PipeConnected { get; private set; }
 
     private void Start()
     {
         _pipe = GetComponent<PipeC>();
+        PipeConnected = false;
     }
 
     private void Update()
@@ -35,38 +37,9 @@ public class PipeManager : MonoBehaviour
 
     private void CheckPipeConnection()
     {
-        bool pipeConnected;
+        PipeConnected = !PipeConnected;
         
-        Debug.Log("Ray casting");
-        //First check
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(connectionCheckPoint1.position, connectionCheckPoint1.forward, out var firstHit, 3, layerMask))
-        {
-            Debug.DrawRay(connectionCheckPoint1.position, connectionCheckPoint1.forward * firstHit.distance, Color.red);
-            Debug.Log("First Hit");
-            // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(connectionCheckPoint2.position, connectionCheckPoint2.forward, out var secondHit, 1, layerMask))
-            {
-                Debug.DrawRay(connectionCheckPoint2.position, connectionCheckPoint2.forward * secondHit.distance, Color.red);
-                Debug.Log("Second Hit Hit");
-                pipeConnected = true;
-            }
-            else
-            {
-                pipeConnected = false;
-            }
-        }
-        else
-        {
-            pipeConnected = false;
-        }
-        
-        
-        if(pipeConnected) onPipeConnected?.Invoke();
-        else
-        {
-            _pipe.ChangePipeConnection();
-        }
+        _pipe.ChangePuzzleConnection(PipeConnected);
         
     }
     
@@ -76,7 +49,7 @@ public class PipeManager : MonoBehaviour
     {
         if (moveInstead)
         {
-            _pipe.ChangePipeConnection();
+            CheckPipeConnection();
 
             if (transform.position == movePositions[pos])
             {

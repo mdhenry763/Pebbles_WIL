@@ -6212,6 +6212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857449725405136505, guid: 987c17eb892f13d489b362d07d19e3b4,
         type: 3}
+      propertyPath: sfxManager
+      value: 
+      objectReference: {fileID: 1477834984}
+    - target: {fileID: 7857449725405136505, guid: 987c17eb892f13d489b362d07d19e3b4,
+        type: 3}
       propertyPath: onShowHint.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10549,8 +10554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipeType: 1
   meshRenderer: {fileID: 0}
-  IsConnected: 0
   ConnectedTo: {fileID: 268916941}
+  IsConnected: 0
+  IsRusting: 0
 --- !u!1 &1204039553
 GameObject:
   m_ObjectHideFlags: 0
@@ -21630,8 +21636,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipeType: 1
   meshRenderer: {fileID: 0}
-  IsConnected: 0
   ConnectedTo: {fileID: 2101897549}
+  IsConnected: 0
+  IsRusting: 0
 --- !u!1001 &5688224118085736071
 PrefabInstance:
   m_ObjectHideFlags: 0
