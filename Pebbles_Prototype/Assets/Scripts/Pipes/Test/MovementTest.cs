@@ -82,9 +82,13 @@ public class MovementTest : MonoBehaviour
         Vector2 input = context.ReadValue<Vector2>();
         _moveInput = new Vector3(input.x, 0, input.y);
 
-        if (input.y != 0)
+        if (input.sqrMagnitude != 0)
         {
             sfxManager.PlayWalkClip();
+        }
+        else
+        {
+            sfxManager.StopWalkClip();
         }
     }
 

@@ -40,6 +40,9 @@ public class PipeSystemManager : MonoBehaviour
     public UnityEvent onGameEnd;
     public UnityEvent<string> onPipeRusting;
 
+    private PipeC valve1;
+    private PipeC valve2;
+
     private void Start()
     {
         GetFullPipeSystem();
@@ -126,6 +129,7 @@ public class PipeSystemManager : MonoBehaviour
                 break;
             }
         }
+        
         ChangePipeVisual();
         CheckForPipeRust();
     }
@@ -190,6 +194,14 @@ public class PipeSystemManager : MonoBehaviour
 
     private void CheckForPipeRust()
     {
+        if (connectedPipes.Count <= 1)
+        {
+            leakingPipe = null;
+            _leakingPipe = false;
+            leakText.text = "";
+            return;
+        }
+        
         foreach (var pipe in connectedPipes)
         {
             var pipeC = pipe.GetComponent<PipeC>();
