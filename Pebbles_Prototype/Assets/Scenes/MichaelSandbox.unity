@@ -2814,7 +2814,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 707840392}
   m_HandleRect: {fileID: 1248923753}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -7924,7 +7924,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1853203595}
   m_HandleRect: {fileID: 1713885381}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -13246,7 +13246,7 @@ MonoBehaviour:
   jumpPower: 1
   gravity: 10
   playerSpeed: 3
-  mouseSensitivity: 1
+  mouseSensitivity: 0.7
   jumpLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -19975,7 +19975,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 698375758}
   m_HandleRect: {fileID: 2137128837}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
