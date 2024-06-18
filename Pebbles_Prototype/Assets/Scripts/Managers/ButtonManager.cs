@@ -19,6 +19,11 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void WatchVideo()
+    {
+        SceneManager.LoadScene(4);
+    }
     // Update is called once per frame
     void Update()
     {

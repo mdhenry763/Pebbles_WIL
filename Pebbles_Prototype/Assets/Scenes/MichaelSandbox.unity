@@ -946,6 +946,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275209874210457085, guid: 0e9d098140b273240afed1a7711a345e,
         type: 3}
+      propertyPath: maxTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275209874210457085, guid: 0e9d098140b273240afed1a7711a345e,
+        type: 3}
       propertyPath: filterGame
       value: 
       objectReference: {fileID: 57068704}
