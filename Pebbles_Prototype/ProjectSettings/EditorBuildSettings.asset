@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaseGameScene.unity
     guid: 3f2ad4c70efdfd84abe1a4c30e5631f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FiltrationMiniGame.unity
     guid: 2a9e87f9844e38749bad2bf443960948
   - enabled: 1
