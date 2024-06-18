@@ -460,11 +460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  maxTime: 10
+  maxTime: 30
   currentTime: 0
   scoreDisplay: {fileID: 258636333506587075}
   time: {fileID: 7165610711714998453}
   miniGameScore: {fileID: 11400000, guid: 9a8dfedbc3c9514478949042d8fd20b0, type: 2}
+  filterGame: {fileID: 0}
+  conserveGame: {fileID: 0}
 --- !u!1 &1630064572056373395
 GameObject:
   m_ObjectHideFlags: 0

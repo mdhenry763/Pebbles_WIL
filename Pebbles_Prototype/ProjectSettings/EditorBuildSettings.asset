@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MichaelSandbox.unity
     guid: 7ca127dfcd0f52141b04718d015241b1
+  - enabled: 1
+    path: Assets/Scenes/Video.unity
+    guid: d531eb82460dd9442b418829b4b74832
   m_configObjects: {}

@@ -4,7 +4,7 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    public int currentScore, maxTime = 100, currentTime;
+    public int currentScore, maxTime = 30, currentTime;
     public TMP_Text scoreDisplay, time;
 
     public MiniGameScore miniGameScore;

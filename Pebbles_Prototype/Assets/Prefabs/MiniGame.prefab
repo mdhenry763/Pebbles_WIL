@@ -836,7 +836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  maxTime: 100
+  maxTime: 30
   currentTime: 0
   scoreDisplay: {fileID: 7358525413021045280}
   time: {fileID: 4292424196366370824}
