@@ -44,26 +44,24 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
-        
         //Sphere check
         isGrounded = Physics.SphereCast(transform.position, 0.5f, Vector3.down, out var raycastHit, 1, groundLayer);
-        Debug.Log($"IsGrounded: {isGrounded}");
         
+        MovePlayer();
+    }
+
+    private void MovePlayer()
+    {
         //Movement
         var input = _controls.Player.Move.ReadValue<Vector2>();
         var move = _camTransform.forward * input.y + _camTransform.right * input.x;
         move.y = 0;
 
-        // if (_playerRb.velocity.magnitude > maxVelMagnitude)
-        // {
-        //     _playerRb.velocity *= maxVelMagnitude / _playerRb.velocity.magnitude;
-        // }
-
         if(!isGrounded) return;
-        _playerRb.velocity += move * moveSpeed;
-        
+        transform.Translate(move * moveSpeed);
+        //_playerRb.velocity += move * moveSpeed;
     }
-    
+
     private void HandlePlayerJump(InputAction.CallbackContext obj)
     {
         if(!isGrounded) return;

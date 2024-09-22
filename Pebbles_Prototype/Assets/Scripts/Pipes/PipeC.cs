@@ -78,7 +78,7 @@ public class PipeC : MonoBehaviour
 
     public void RustPipe(Material rustMaterial)
     {
-        //Debug.Log($"Changing pipe colour: {IsConnected}");
+        //Debug.Log($"Changing pipe colour: {IsFlowing}");
         ChangePipeColour(rustMaterial);
         IsRusting = true;
         OnIsConnectedValueChange?.Invoke();
@@ -103,7 +103,9 @@ public class PipeC : MonoBehaviour
 
 public enum PipeType
 {
+    Source,
     Valve,
     Connection,
-    Normal
+    Normal,
+    End
 }
