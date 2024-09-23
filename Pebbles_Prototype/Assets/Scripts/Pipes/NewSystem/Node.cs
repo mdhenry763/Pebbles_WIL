@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,7 +17,8 @@ public class Node : MonoBehaviour
     
     [Header("Pipe State")]
     public bool IsSource;
-    [FormerlySerializedAs("IsConnected")] public bool IsFlowing;
+    public bool IsFlowing;
+    public bool IsClosed;
     public PipeType Type;
     
     private MeshRenderer _renderer;
@@ -57,21 +59,16 @@ public class Node : MonoBehaviour
 
     private bool CheckConnection()
     {
+        var count = _connectionChecks.Count(connection => connection.CheckConnection());
+        
         //onConnectionChanged?.Invoke(this);
         if (!IsSource) //Do not have to check connections if pipe is the source
         {
-            int count = 0;
-            foreach (var connection in _connectionChecks)
-            {
-                if (connection.CheckConnection())
-                {
-                    count++;
-                }
-            }
-
             IsFlowing = count > 0;
         }
         
+        //Check is circuit is closed
+        //TODO: create a Node controller to see if the system is closed
         
         if (IsFlowing)
         {
@@ -96,6 +93,7 @@ public class ConnectionCheck
     private float _connectionDistance;
     private LayerMask _connectionLayer;
 
+    //Could add a connection check to see if node connected
     public ConnectionCheck(Transform connectionPoint, float connectDistance, LayerMask connectionLayer)
     {
         _connectionPoint = connectionPoint;

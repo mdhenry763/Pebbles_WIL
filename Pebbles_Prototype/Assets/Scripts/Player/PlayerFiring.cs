@@ -20,16 +20,21 @@ public class PlayerFiring : MonoBehaviour
     public void OnFire(InputAction.CallbackContext context)
     {
         if(cooldown) return;
-        RaycastHit hit;
+        if(!context.performed) return;
 
         //casts ray to mouse position
-        Ray mousePos = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        //Get screen mid-point
+        var screenMidpoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        Ray mousePos = _mainCam.ScreenPointToRay(screenMidpoint);
 
         //if there was a ray cast the player will look at it
-        if (Physics.Raycast(mousePos, out hit, 100f, fireLayer))
+        if (Physics.Raycast(mousePos, out var hit, 100f, fireLayer))
         {
             Debug.Log($"Hit other {hit.collider.name}");
-            
+            if (hit.transform.TryGetComponent<PuzzlePiece>(out var puzzlePiece))
+            {
+                puzzlePiece.RotateObject();
+            }
             
         }
     }

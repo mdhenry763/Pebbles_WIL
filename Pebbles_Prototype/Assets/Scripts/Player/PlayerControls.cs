@@ -28,6 +28,9 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         _camTransform = Camera.main.transform;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -57,7 +60,7 @@ public class PlayerControls : MonoBehaviour
         var move = _camTransform.forward * input.y + _camTransform.right * input.x;
         move.y = 0;
 
-        if(!isGrounded) return;
+        //if(!isGrounded) return;
         transform.Translate(move * moveSpeed);
         //_playerRb.velocity += move * moveSpeed;
     }
