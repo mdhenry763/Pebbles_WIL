@@ -25,12 +25,30 @@ public class Node : MonoBehaviour
     
     private List<ConnectionCheck> _connectionChecks = new List<ConnectionCheck>();
 
+    //Events
+    public static event Action OnConnectionChanged;
+
     private void Start()
     {
         //renderer = GetComponent<MeshRenderer>();
         
         //Setup Connections
         SetupConnections();
+    }
+
+    private void OnEnable()
+    {
+        InteractionArea.OnPipeToggled += HandlePipeToggled;
+    }
+
+    private void OnDisable()
+    {
+        InteractionArea.OnPipeToggled -= HandlePipeToggled;
+    }
+
+    private void HandlePipeToggled()
+    {
+        CheckConnection();
     }
 
     private void SetupConnections()
@@ -40,14 +58,6 @@ public class Node : MonoBehaviour
             ConnectionCheck connectionCheck = new ConnectionCheck(connection, connectionDistance, connectionLayer);
             _connectionChecks.Add(connectionCheck);
         }
-    }
-
-    //Events
-    public static event Action<Node> onConnectionChanged;
-
-    private void Update()
-    {
-        CheckConnection();
     }
 
     public void PipeToggle()
@@ -67,9 +77,18 @@ public class Node : MonoBehaviour
         {
             IsFlowing = count > 0;
         }
-        
+
         //Check is circuit is closed
-        //TODO: create a Node controller to see if the system is closed
+        if (IsFlowing && Type == PipeType.End)
+        {
+            IsClosed = true;
+        }
+        else
+        {
+            IsClosed = false;
+        }
+        
+        OnConnectionChanged?.Invoke();
         
         if (IsFlowing)
         {

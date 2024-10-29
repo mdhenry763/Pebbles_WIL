@@ -8,6 +8,9 @@ using UnityEngine.Rendering;
 public class InteractionArea : MonoBehaviour
 {
     private Node _pipeSource;
+    private MiniGameHandler _miniGameHandler;
+
+    public static event Action OnPipeToggled;
 
     public void HandleInteraction(InputAction.CallbackContext context)
     {
@@ -16,6 +19,13 @@ public class InteractionArea : MonoBehaviour
         if (_pipeSource != null)
         {
             _pipeSource.PipeToggle();
+            //Event to control what happens to pipe, connection check, leak check rust check
+            OnPipeToggled?.Invoke();
+        }
+
+        if (_miniGameHandler != null)
+        {
+            _miniGameHandler.EnableMiniGame();
         }
     }
     
@@ -31,18 +41,35 @@ public class InteractionArea : MonoBehaviour
                 }
             }
         }
+
+        if (other.CompareTag("MiniGame"))
+        {
+            if (other.TryGetComponent<MiniGameHandler>(out var miniGame))
+            {
+                _miniGameHandler = miniGame;
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(_pipeSource == null) return;
-        if (!other.CompareTag("Pipe")) return;
-
-        if (!other.TryGetComponent<Node>(out var pipe)) return;
         
-        if (pipe.IsSource)
+        if (other.CompareTag("Pipe"))
         {
-            _pipeSource = null;
+            if(_pipeSource == null) return;
+            if (!other.TryGetComponent<Node>(out var pipe)) return;
+        
+            if (pipe.IsSource)
+            {
+                _pipeSource = null;
+            }
         }
+        
+        if (other.CompareTag("MiniGame"))
+        {
+            _miniGameHandler = null;
+        }
+
+        
     }
 }
