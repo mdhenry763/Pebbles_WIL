@@ -14,6 +14,7 @@ public class Node : MonoBehaviour
     [Header("Materials")] 
     public Material notConnectedMat;
     public Material connectedMat;
+    public MeshRenderer renderer;
     
     [Header("Pipe State")]
     public bool IsSource;
@@ -21,12 +22,12 @@ public class Node : MonoBehaviour
     public bool IsClosed;
     public PipeType Type;
     
-    private MeshRenderer _renderer;
+    
     private List<ConnectionCheck> _connectionChecks = new List<ConnectionCheck>();
 
     private void Start()
     {
-        _renderer = GetComponent<MeshRenderer>();
+        //renderer = GetComponent<MeshRenderer>();
         
         //Setup Connections
         SetupConnections();
@@ -72,11 +73,11 @@ public class Node : MonoBehaviour
         
         if (IsFlowing)
         {
-            _renderer.material = connectedMat;
+            renderer.material = connectedMat;
             return true;
         }
        
-        _renderer.material = notConnectedMat;
+        renderer.material = notConnectedMat;
         return false;
     }
 

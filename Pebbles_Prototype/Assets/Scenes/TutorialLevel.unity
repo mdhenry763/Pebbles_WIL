@@ -6814,7 +6814,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Welcome to our game about water conservation. We hope to educate you on
     ways we can save and filter water. We can all agree that water is one of if not
-    the most valuable resource avaible to human kind.
+    the most valuable resource available to human kind.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
