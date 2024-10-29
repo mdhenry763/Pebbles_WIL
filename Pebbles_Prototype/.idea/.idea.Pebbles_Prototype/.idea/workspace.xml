@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Materials/Red.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/LeakHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/LeakHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/PuzzlePiece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/PuzzlePiece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/CrossSceneEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/Test/CrossSceneEvents.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/InteractionArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InteractionArea.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +138,7 @@
       <workItem from="1727009263014" duration="7410000" />
       <workItem from="1727123580025" duration="1438000" />
       <workItem from="1730206381731" duration="6830000" />
+      <workItem from="1730220577510" duration="3152000" />
     </task>
     <servers />
   </component>

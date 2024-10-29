@@ -10,32 +10,34 @@ public class MiniGameHandler : MonoBehaviour
     public MiniGameType miniGameType;
 
     private bool _isEnabled;
+    private bool _isFinished;
 
-    private void OnEnable()
+    private void Update()
     {
-        Node.OnConnectionChanged += HandleConnectionChange;
-    }
-
-    private void OnDisable()
-    {
-        Node.OnConnectionChanged -= HandleConnectionChange;
+        HandleConnectionChange();
     }
 
     private void HandleConnectionChange()
     {
+        if(_isFinished) return;
         if (endNode.IsFlowing && endNode.IsClosed)
         {
-            Debug.Log("Minigame can be enabled");
+            Debug.Log("Mini-game can be enabled");
             _isEnabled = true;
         }
-        else _isEnabled = false;
+        else
+        {
+            _isEnabled = false;
+        }
     }
 
     public void EnableMiniGame()
     {
+        if (_isFinished) return;
         if(!_isEnabled) return;
         
         Debug.Log("Enabled MiniGame");
+        _isFinished = true;
     }
 }
 

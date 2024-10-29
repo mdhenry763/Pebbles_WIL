@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LeakHandler : MonoBehaviour
 {
@@ -9,14 +10,32 @@ public class LeakHandler : MonoBehaviour
 
     private bool _isLeaking;
 
-    private void CheckForLeak()
+    private void Start()
+    {
+        StartCoroutine(RustNode());
+    }
+
+    private bool CheckIfPipesConnected()
     {
         //Check start and end Nodes for Start Node: IsFlowing and End Node: !IsClosed then leaking
+        var pipeSection = pipeSections[Random.Range(0, pipeSections.Length)];
+
+        if (!pipeSection.pipeStart.IsFlowing || !pipeSection.pipeEnd.IsClosed) return false;
+        
+        var pipe = pipeSection.pipes[Random.Range(0, pipeSection.pipes.Length)];
+        pipe.Rusting();
+        return true;
+
     }
 
     IEnumerator RustNode()
     {
-        yield return new WaitForSeconds(5);
+        while (true)
+        {
+            CheckIfPipesConnected();
+            yield return new WaitForSeconds(5);
+        }
+        
         //TODO: Select Random Pipe Section and select random node to rust
     }
 }

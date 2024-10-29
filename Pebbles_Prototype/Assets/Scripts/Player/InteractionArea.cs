@@ -42,10 +42,11 @@ public class InteractionArea : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("MiniGame"))
+        if (other.CompareTag("Mini-Game"))
         {
             if (other.TryGetComponent<MiniGameHandler>(out var miniGame))
             {
+                Debug.Log("Mini Game");
                 _miniGameHandler = miniGame;
             }
         }
@@ -65,7 +66,7 @@ public class InteractionArea : MonoBehaviour
             }
         }
         
-        if (other.CompareTag("MiniGame"))
+        if (other.CompareTag("Mini-Game"))
         {
             _miniGameHandler = null;
         }

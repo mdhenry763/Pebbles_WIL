@@ -7,5 +7,6 @@ public class PuzzlePiece : MonoBehaviour
     public void RotateObject()
     {
         transform.Rotate(rotation);
+        CrossSceneEvents.FirePipeRotated();
     }
 }

@@ -25,9 +25,6 @@ public class Node : MonoBehaviour
     
     private List<ConnectionCheck> _connectionChecks = new List<ConnectionCheck>();
 
-    //Events
-    public static event Action OnConnectionChanged;
-
     private void Start()
     {
         //renderer = GetComponent<MeshRenderer>();
@@ -38,12 +35,22 @@ public class Node : MonoBehaviour
 
     private void OnEnable()
     {
-        InteractionArea.OnPipeToggled += HandlePipeToggled;
+        
     }
 
     private void OnDisable()
     {
-        InteractionArea.OnPipeToggled -= HandlePipeToggled;
+        
+    }
+
+    private void Update()
+    {
+        CheckConnection();
+    }
+
+    public void Rusting()
+    {
+        Debug.Log("Pipe is rusting");
     }
 
     private void HandlePipeToggled()
@@ -88,7 +95,7 @@ public class Node : MonoBehaviour
             IsClosed = false;
         }
         
-        OnConnectionChanged?.Invoke();
+        //CrossSceneEvents.FireOnConnectionChange();
         
         if (IsFlowing)
         {

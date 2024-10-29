@@ -10,6 +10,7 @@ TagManager:
   - ScoreKeeper
   - Bullet
   - JournalManager
+  - Mini-Game
   layers:
   - Default
   - TransparentFX
