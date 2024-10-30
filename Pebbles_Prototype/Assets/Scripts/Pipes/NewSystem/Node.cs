@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class Node : MonoBehaviour
 {
     [Header("Connection points")] 
+    public Node connectionPoint;
     public float connectionDistance = 1f;
     public Transform[] connectionPoints;
     public LayerMask connectionLayer;
@@ -31,16 +32,7 @@ public class Node : MonoBehaviour
         
         //Setup Connections
         SetupConnections();
-    }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
+        ChangePipeColour();
     }
 
     private void Update()
@@ -73,16 +65,27 @@ public class Node : MonoBehaviour
         if(!IsSource) return;
 
         IsFlowing = !IsFlowing;
+        ChangePipeColour();
     }
 
-    private bool CheckConnection()
+    private void CheckConnection()
     {
-        var count = _connectionChecks.Count(connection => connection.CheckConnection());
+        var count = _connectionChecks.Count(connection => connection.CheckIfFlowing());
+
+        if (connectionPoint == null) return;
         
+        if (!connectionPoint.IsFlowing)
+        {
+            IsFlowing = false;
+            ChangePipeColour();
+            return;
+        }
+        
+        Debug.Log($"{name} has {count} connections");
         //onConnectionChanged?.Invoke(this);
         if (!IsSource) //Do not have to check connections if pipe is the source
         {
-            IsFlowing = count > 0;
+            IsFlowing = count > 0 ;
         }
 
         //Check is circuit is closed
@@ -97,28 +100,26 @@ public class Node : MonoBehaviour
         
         //CrossSceneEvents.FireOnConnectionChange();
         
+        ChangePipeColour();
+    }
+
+    private void ChangePipeColour()
+    {
         if (IsFlowing)
         {
             renderer.material = connectedMat;
-            return true;
+            return;
         }
-       
-        renderer.material = notConnectedMat;
-        return false;
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Gizmos.DrawRay(cPointOne.position, cPointOne.right);
+        renderer.material = notConnectedMat;
     }
 }
 
 public class ConnectionCheck
 {
-    private Transform _connectionPoint;
-    private float _connectionDistance;
-    private LayerMask _connectionLayer;
+    private readonly Transform _connectionPoint;
+    private readonly float _connectionDistance;
+    private readonly LayerMask _connectionLayer;
 
     //Could add a connection check to see if node connected
     public ConnectionCheck(Transform connectionPoint, float connectDistance, LayerMask connectionLayer)
@@ -127,23 +128,24 @@ public class ConnectionCheck
         _connectionDistance = connectDistance;
         _connectionLayer = connectionLayer;
     }
-
-    public bool CheckConnection()
+    
+    
+    public bool CheckIfFlowing()
     {
-        RaycastHit cHit;
+        
         bool connection = Physics.Raycast(
-            _connectionPoint.position, _connectionPoint.right, out cHit, _connectionDistance, _connectionLayer);
+            _connectionPoint.position, _connectionPoint.right, out var cHit, _connectionDistance, _connectionLayer);
 
         if (!connection)
         {
             return false;
         }
 
-        if (cHit.transform.TryGetComponent<Node>(out var node))
+        if(cHit.transform.TryGetComponent<Node>(out var node))
         {
             return node.IsFlowing;
         }
-        
+
         return false;
     }
     
