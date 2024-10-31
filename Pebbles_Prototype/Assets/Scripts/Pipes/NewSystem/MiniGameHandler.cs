@@ -7,10 +7,19 @@ public class MiniGameHandler : MonoBehaviour
 {
     [Header("Type")] 
     public Node endNode;
+    public GameObject Level;
+    public GameObject MiniGame;
     public MiniGameType miniGameType;
 
     private bool _isEnabled;
     private bool _isFinished;
+
+    public static event Action OnMiniGameFinished;
+
+    private void Start()
+    {
+        _isFinished = false;
+    }
 
     private void Update()
     {
@@ -20,9 +29,9 @@ public class MiniGameHandler : MonoBehaviour
     private void HandleConnectionChange()
     {
         if(_isFinished) return;
+        
         if (endNode.IsFlowing && endNode.IsClosed)
         {
-            Debug.Log("Mini-game can be enabled");
             _isEnabled = true;
         }
         else
@@ -37,6 +46,16 @@ public class MiniGameHandler : MonoBehaviour
         if(!_isEnabled) return;
         
         Debug.Log("Enabled MiniGame");
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Level.SetActive(false);
+        MiniGame.SetActive(true);
+    }
+
+    private void MiniGameFinished()
+    {
+        OnMiniGameFinished?.Invoke();
         _isFinished = true;
     }
 }

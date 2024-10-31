@@ -105,6 +105,7 @@ public enum PipeType
 {
     Source,
     Valve,
+    Continuous,
     Connection,
     Normal,
     End

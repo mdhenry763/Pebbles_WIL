@@ -37,17 +37,20 @@ public class Node : MonoBehaviour
 
     private void Update()
     {
+        if (Type == PipeType.Continuous)
+        {
+            IsFlowing = connectionPoint.IsFlowing;
+            ChangePipeColour();
+        
+            return;
+        }
+        
         CheckConnection();
     }
 
     public void Rusting()
     {
         Debug.Log("Pipe is rusting");
-    }
-
-    private void HandlePipeToggled()
-    {
-        CheckConnection();
     }
 
     private void SetupConnections()
@@ -81,7 +84,6 @@ public class Node : MonoBehaviour
             return;
         }
         
-        Debug.Log($"{name} has {count} connections");
         //onConnectionChanged?.Invoke(this);
         if (!IsSource) //Do not have to check connections if pipe is the source
         {
@@ -107,10 +109,13 @@ public class Node : MonoBehaviour
     {
         if (IsFlowing)
         {
+            if(renderer.material == connectedMat) return;
+            
             renderer.material = connectedMat;
             return;
         }
 
+        if(renderer.material == notConnectedMat) return;
         renderer.material = notConnectedMat;
     }
 }
