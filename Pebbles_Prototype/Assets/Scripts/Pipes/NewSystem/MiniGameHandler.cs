@@ -14,11 +14,19 @@ public class MiniGameHandler : MonoBehaviour
     private bool _isEnabled;
     private bool _isFinished;
 
-    public static event Action OnMiniGameFinished;
-
     private void Start()
     {
         _isFinished = false;
+    }
+
+    private void OnEnable()
+    {
+        SimonSaysButtonManager.OnMiniGameComplete += MiniGameFinished;
+    }
+
+    private void OnDisable()
+    {
+        SimonSaysButtonManager.OnMiniGameComplete -= MiniGameFinished;
     }
 
     private void Update()
@@ -55,7 +63,11 @@ public class MiniGameHandler : MonoBehaviour
 
     private void MiniGameFinished()
     {
-        OnMiniGameFinished?.Invoke();
+        Level.SetActive(true);
+        MiniGame.SetActive(false);
+        
+        //Activate Sprinkler camera
+        
         _isFinished = true;
     }
 }

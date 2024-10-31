@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class SimonSaysButtonManager : MonoBehaviour
 {
@@ -13,6 +15,11 @@ public class SimonSaysButtonManager : MonoBehaviour
     private bool isPlayerTurn = false;
     public float lightUpDuration = 0.5f;
     public SimonSaysUIManager _SimonSaysUIManager;
+    
+    //Events
+    public static event Action OnMiniGameComplete;
+    
+    
     void Start()
     {
         _GameManager = GameManager.Instance;
@@ -59,6 +66,7 @@ public class SimonSaysButtonManager : MonoBehaviour
     {
        //Todo Load Level 2
        _GameManager.filtrationMiniGameScore = currentScore;
+       OnMiniGameComplete?.Invoke();
     }
     public void ButtonPressed(int index)
     {

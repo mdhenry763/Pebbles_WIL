@@ -722,6 +722,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77419508}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &117642510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117642511}
+  m_Layer: 0
+  m_Name: Sprinkler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &117642511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117642510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.371, y: 1.027, z: -13.528}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &146959137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2873,6 +2904,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868552379}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &907273694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6085914426569417871, guid: 2b37cae8d7fcd784887f41915970cc1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1015727414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &907273698
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907273694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2c6737fe9548cb44af91c827725f864, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &959616184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,6 +3147,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1015727421}
+    - targetCorrespondingSourceObject: {fileID: -6085914426569417871, guid: 2b37cae8d7fcd784887f41915970cc1a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 907273698}
     - targetCorrespondingSourceObject: {fileID: -2110888393258999048, guid: 2b37cae8d7fcd784887f41915970cc1a,
         type: 3}
       insertIndex: -1
@@ -5703,3 +5765,4 @@ SceneRoots:
   - {fileID: 1088587971}
   - {fileID: 496353108}
   - {fileID: 1128585766}
+  - {fileID: 117642511}
