@@ -9,9 +9,9 @@ public class PlayerEventSystemSO : ScriptableObject
 {
     public event Action<bool> OnActivateUI;
     public event Action OnActivateWrenchie;
-    public event Action OnShowManual;
+    public event Action<UIEvents> OnShowMenu;
+    public event Action<bool> EnableTimeSystem;
     
-    //Add more
 
     public void FireUIEvent(bool activate)
     {
@@ -23,10 +23,23 @@ public class PlayerEventSystemSO : ScriptableObject
         OnActivateWrenchie?.Invoke();
     }
 
-    public void FireShowManualEvent()
+    public void FireShowMenuEvent(UIEvents uiEvent)
     {
-        OnShowManual?.Invoke();
+        OnShowMenu?.Invoke(uiEvent);
     }
+
+    public void FireEnableTimeSystem(bool enabled)
+    {
+        EnableTimeSystem?.Invoke(enabled);
+    }
+    
+    
+}
+
+public enum UIEvents
+{
+    Pause,
+    Journal
 }
 
 

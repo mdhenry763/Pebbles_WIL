@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerControls : MonoBehaviour
 {
     [Header("References")]
     public Camera mainCam;
+    public CinemachineVirtualCamera followCam;
     public PlayerEventSystemSO playerEvents;
     public GameObject wrenchie;
     
@@ -16,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     public float jumpForce = 10f;
     public LayerMask groundLayer;
     public float maxVelMagnitude = 200f;
+
+    public bool disableCamInBeginning;
     
     //Player Components
     private InputActions _controls;
@@ -38,6 +42,7 @@ public class PlayerControls : MonoBehaviour
     {
         _camTransform = mainCam.transform;
         _defaultMoveSpeed = moveSpeed;
+        followCam.enabled = !disableCamInBeginning;
     }
 
     private void OnEnable()
@@ -46,6 +51,7 @@ public class PlayerControls : MonoBehaviour
         
         _controls.Player.Jump.performed += HandlePlayerJump;
         _controls.Player.Journal.performed += HandleJournalCalled;
+        _controls.Player.Escape.performed += HandlePauseCalled;
         
         playerEvents.OnActivateUI += HandleUIActivation;
         playerEvents.OnActivateWrenchie += ActivateWrenchie;
@@ -54,6 +60,8 @@ public class PlayerControls : MonoBehaviour
     private void OnDisable()
     {
         _controls.Player.Jump.performed -= HandlePlayerJump;
+        _controls.Player.Journal.performed -= HandleJournalCalled;
+        _controls.Player.Escape.performed -= HandlePauseCalled;
         _controls.Disable();
         
         playerEvents.OnActivateUI -= HandleUIActivation;
@@ -73,7 +81,6 @@ public class PlayerControls : MonoBehaviour
         if (activate)
         {
             UnlockCursor();
-            
         }
         else
         {
@@ -90,6 +97,7 @@ public class PlayerControls : MonoBehaviour
 
     public void LockCursor()
     {
+        followCam.enabled = true;
         moveSpeed = _defaultMoveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -97,16 +105,32 @@ public class PlayerControls : MonoBehaviour
 
     private void UnlockCursor()
     {
+        followCam.enabled = false;
         moveSpeed = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private void HandleMenuEvent(UIEvents uiEvents)
+    {
+        HandleUIActivation(true);
+        playerEvents.FireShowMenuEvent(uiEvents);
     }
 
     private void HandleJournalCalled(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
-            playerEvents.FireShowManualEvent();
+            HandleMenuEvent(UIEvents.Journal);
+        }
+        
+    }
+    
+    private void HandlePauseCalled(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            HandleMenuEvent(UIEvents.Pause);
         }
         
     }
