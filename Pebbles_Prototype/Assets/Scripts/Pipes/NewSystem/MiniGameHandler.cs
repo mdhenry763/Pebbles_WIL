@@ -62,6 +62,7 @@ public class MiniGameHandler : MonoBehaviour
         Cursor.visible = true;
         Level.SetActive(false);
         MiniGame.SetActive(true);
+        _isFinished = true;
     }
 
     private void MiniGameFinished()
