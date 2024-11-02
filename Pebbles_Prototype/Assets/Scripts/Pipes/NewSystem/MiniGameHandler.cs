@@ -11,6 +11,9 @@ public class MiniGameHandler : MonoBehaviour
     public GameObject MiniGame;
     public MiniGameType miniGameType;
 
+    [Header("Activate After mini-game")] 
+    public GameObject objectToActivate;
+
     private bool _isEnabled;
     private bool _isFinished;
 
@@ -67,6 +70,11 @@ public class MiniGameHandler : MonoBehaviour
         MiniGame.SetActive(false);
         
         //Activate Sprinkler camera
+        if (objectToActivate != null)
+        {
+            objectToActivate.SetActive(true);
+        }
+        
         
         _isFinished = true;
     }

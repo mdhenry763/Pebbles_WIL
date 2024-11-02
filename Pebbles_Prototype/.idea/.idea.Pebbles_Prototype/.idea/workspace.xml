@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimonSaysMiniGame/SimonSaysButtonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimonSaysMiniGame/SimonSaysButtonManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,8 @@
       <workItem from="1730220577510" duration="3152000" />
       <workItem from="1730229930672" duration="14000" />
       <workItem from="1730297684651" duration="9619000" />
-      <workItem from="1730379951725" duration="3283000" />
+      <workItem from="1730379951725" duration="3883000" />
+      <workItem from="1730549685630" duration="580000" />
     </task>
     <servers />
   </component>
