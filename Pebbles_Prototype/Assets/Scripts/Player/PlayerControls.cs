@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
+    [Header("References")]
+    public Camera mainCam;
+    public PlayerEventSystemSO playerEvents;
+    public GameObject wrenchie;
+    
+    [Header("Player Settings")]
     public float moveSpeed = 0.1f;
     public float jumpForce = 10f;
     public LayerMask groundLayer;
@@ -18,6 +24,9 @@ public class PlayerControls : MonoBehaviour
     
     //State
     private bool isGrounded;
+    
+    //Movement
+    private float _defaultMoveSpeed;
 
     private void Awake()
     {
@@ -27,10 +36,8 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
-        _camTransform = Camera.main.transform;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        _camTransform = mainCam.transform;
+        _defaultMoveSpeed = moveSpeed;
     }
 
     private void OnEnable()
@@ -38,11 +45,19 @@ public class PlayerControls : MonoBehaviour
         _controls.Enable();
         
         _controls.Player.Jump.performed += HandlePlayerJump;
+        _controls.Player.Journal.performed += HandleJournalCalled;
+        
+        playerEvents.OnActivateUI += HandleUIActivation;
+        playerEvents.OnActivateWrenchie += ActivateWrenchie;
     }
 
     private void OnDisable()
     {
+        _controls.Player.Jump.performed -= HandlePlayerJump;
         _controls.Disable();
+        
+        playerEvents.OnActivateUI -= HandleUIActivation;
+        playerEvents.OnActivateWrenchie -= ActivateWrenchie;
     }
 
     private void Update()
@@ -51,6 +66,49 @@ public class PlayerControls : MonoBehaviour
         isGrounded = Physics.SphereCast(transform.position, 0.5f, Vector3.down, out var raycastHit, 1, groundLayer);
         
         MovePlayer();
+    }
+    
+    private void HandleUIActivation(bool activate)
+    {
+        if (activate)
+        {
+            UnlockCursor();
+            
+        }
+        else
+        {
+            LockCursor();
+        }
+    }
+
+    private void ActivateWrenchie()
+    {
+        if (wrenchie == null) return;
+        
+        wrenchie.SetActive(true);
+    }
+
+    public void LockCursor()
+    {
+        moveSpeed = _defaultMoveSpeed;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void UnlockCursor()
+    {
+        moveSpeed = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void HandleJournalCalled(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            playerEvents.FireShowManualEvent();
+        }
+        
     }
 
     private void MovePlayer()

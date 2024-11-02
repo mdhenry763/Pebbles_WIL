@@ -9,12 +9,19 @@ public class WrenchieUI : MonoBehaviour
     public GameObject wrenchieUI;
     public TMP_Text header;
     public TMP_Text body;
+
+    public PlayerEventSystemSO playerEvents;
+    
+    
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             wrenchieUI.SetActive(true);
+            
+            playerEvents.FireWrenchieEvent();
+            playerEvents.FireUIEvent(true);
 
             if (other.TryGetComponent<MovementTest>(out var test))
             {
@@ -29,6 +36,7 @@ public class WrenchieUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             wrenchieUI.SetActive(false);
+            playerEvents.FireUIEvent(false);
             
             if (other.TryGetComponent<MovementTest>(out var test))
             {
