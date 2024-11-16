@@ -80,6 +80,7 @@ public class Node : MonoBehaviour
         if (!connectionPoint.IsFlowing)
         {
             IsFlowing = false;
+            IsClosed = false;
             ChangePipeColour();
             return;
         }
@@ -89,9 +90,9 @@ public class Node : MonoBehaviour
         {
             IsFlowing = count > 0 ;
         }
-
+        
         //Check is circuit is closed
-        if (IsFlowing && Type == PipeType.End)
+        if (IsFlowing && Type == PipeType.End && connectionPoint.IsFlowing)
         {
             IsClosed = true;
         }

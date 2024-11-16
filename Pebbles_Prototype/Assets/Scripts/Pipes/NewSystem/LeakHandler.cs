@@ -1,29 +1,61 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class LeakHandler : MonoBehaviour
 {
     [Header("Sections: ")] public PipeSection[] pipeSections;
+    
+    [Header("Score")] 
+    public float leakScoreMax = 80;
+    public float leakMultiplier = 1f;
 
+    [Header("UI")]
+    public Image leakBar;
+    public TMP_Text leakText;
+
+    private float _leakScore = 80;
     private bool _isLeaking;
 
     private void Start()
     {
         StartCoroutine(RustNode());
+
+        _leakScore = leakScoreMax;
+    }
+
+    public float GetLeakScore()
+    {
+        return _leakScore;
     }
 
     private void Update()
     {
         foreach (var pipeSection in pipeSections)
         {
-            if (pipeSection.pipeStart.IsFlowing && pipeSection.pipeEnd.IsClosed) return;
+            if (pipeSection.pipeStart.IsFlowing && pipeSection.pipeEnd.IsClosed)
+            {
+                leakText.text = "";
+                continue;
+            }
 
             if (pipeSection.pipeStart.IsFlowing)
             {
                 //Leaking
+                _leakScore -= Time.deltaTime * leakMultiplier;
+                Debug.Log(_leakScore);
+                
+                if(leakBar == null) return;
+
+                leakBar.fillAmount = _leakScore / leakScoreMax;
+                
+                if(leakText == null) return;
+
+                leakText.text = "Leaking";
                 Debug.Log("Leaking");
             }
         }
