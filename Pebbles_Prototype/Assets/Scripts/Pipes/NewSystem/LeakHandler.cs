@@ -15,6 +15,20 @@ public class LeakHandler : MonoBehaviour
         StartCoroutine(RustNode());
     }
 
+    private void Update()
+    {
+        foreach (var pipeSection in pipeSections)
+        {
+            if (pipeSection.pipeStart.IsFlowing && pipeSection.pipeEnd.IsClosed) return;
+
+            if (pipeSection.pipeStart.IsFlowing)
+            {
+                //Leaking
+                Debug.Log("Leaking");
+            }
+        }
+    }
+
     private bool CheckIfPipesConnected()
     {
         //Check start and end Nodes for Start Node: IsFlowing and End Node: !IsClosed then leaking
@@ -46,6 +60,7 @@ public class LeakHandler : MonoBehaviour
 public struct PipeSection
 {
     public Node pipeStart;
+    public Node connection;
     public Node[] pipes;
     public Node pipeEnd;
 }
