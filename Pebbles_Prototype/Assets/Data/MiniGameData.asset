@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f62022a462149a4931a8706720a4d31, type: 3}
   m_Name: MiniGameData
   m_EditorClassIdentifier: 
-  score: 0
+  miniGameScore: 60
+  timeScore: 1.6901264
+  leakScore: 0

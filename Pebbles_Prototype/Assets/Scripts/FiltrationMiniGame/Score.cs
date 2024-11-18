@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -12,6 +13,8 @@ public class Score : MonoBehaviour
     public GameObject filterGame;
 
     public GameObject conserveGame;
+
+    public static event Action OnMiniGameComplete;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +49,7 @@ public class Score : MonoBehaviour
         miniGameScore.miniGameScore = currentScore;
         conserveGame.SetActive(true);
         CrossSceneEvents.FireOnMiniGameFinished();
-        
+        OnMiniGameComplete?.Invoke();
     }
     
     

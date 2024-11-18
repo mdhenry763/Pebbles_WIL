@@ -10,8 +10,11 @@ public class TutStateManager : MonoBehaviour
 
     public Node secondEndNode;
     public MiniGameHandler miniGameHandler;
+    public TimeSystem timer;
+    public MiniGameScore miniGameScore;
+    public LeakHandler leakHandler;
 
-    public event Action OnGameEnd;
+    public static event Action<float> OnGameEnd;
     
     private bool _isEndGame;
 
@@ -26,7 +29,15 @@ public class TutStateManager : MonoBehaviour
 
         if (!firstEndNode.IsClosed || !secondEndNode.IsClosed || !miniGameHandler.IsMiniGameFinished()) return;
         
+        EndGame();
+    }
+
+    private void EndGame()
+    {
         _isEndGame = true;
-        OnGameEnd?.Invoke();
+
+        var score = miniGameScore.timeScore + (float)miniGameScore.miniGameScore + leakHandler.GetLeakScore();
+        
+        OnGameEnd?.Invoke(score);
     }
 }

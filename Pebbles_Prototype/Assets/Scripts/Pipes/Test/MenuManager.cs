@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     public GameObject journalMenu;
     public GameObject startCanvas;
     public GameObject endGameMenu;
+
+    [Header("Timer")] public TimeSystem timer;
     
     [Header("Scenes")]
     public string loadScene0 = "MainMenu";
@@ -21,6 +23,23 @@ public class MenuManager : MonoBehaviour
     private void OnEnable()
     {
         playerEvents.OnShowMenu += HandleShowMenuCalled;
+        TutStateManager.OnGameEnd += HandleGameEnd;
+    }
+
+    private void OnDisable()
+    {
+        playerEvents.OnShowMenu -= HandleShowMenuCalled;
+        TutStateManager.OnGameEnd -= HandleGameEnd;
+    }
+
+    private void HandleGameEnd(float score)
+    {
+        playerEvents.FireUIEvent(true);
+        endGameMenu.SetActive(true);
+        if (endGameMenu.TryGetComponent<EndGameScore>(out var endGameScore))
+        {
+            endGameScore.SetScoreTxt($"Score: {(int)score}");
+        }
     }
 
     private void HandleShowMenuCalled(UIEvents uiEvents)
@@ -36,12 +55,16 @@ public class MenuManager : MonoBehaviour
                 //Show Pause Menu
                 break;
         }
+        
+        timer.StopTime();
     }
 
     public void ExitMenu()
     {
         pauseMenu.SetActive(false);
         journalMenu.SetActive(false);
+        
+        timer.StartTime();
         
         if(!startCanvas.activeSelf)
             playerEvents.FireUIEvent(false);

@@ -8,6 +8,7 @@ public class TimeSystem : MonoBehaviour
 {
     public TMP_Text timeTakenText;
     public MiniGameScore score;
+    public PlayerEventSystemSO playerEvents;
 
     private float time;
     private bool _isTakingTime;

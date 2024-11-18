@@ -26,11 +26,13 @@ public class MiniGameHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        Score.OnMiniGameComplete += MiniGameFinished;
         SimonSaysButtonManager.OnMiniGameComplete += MiniGameFinished;
     }
 
     private void OnDisable()
     {
+        Score.OnMiniGameComplete -= MiniGameFinished;
         SimonSaysButtonManager.OnMiniGameComplete -= MiniGameFinished;
     }
 
@@ -69,6 +71,7 @@ public class MiniGameHandler : MonoBehaviour
 
     private void MiniGameFinished()
     {
+        Debug.Log("Mini-Game Ended");
         Level.SetActive(true);
         MiniGame.SetActive(false);
         
