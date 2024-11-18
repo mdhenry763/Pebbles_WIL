@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f873fb54091770b47a32ecb08585717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectionPoint: {fileID: 0}
   connectionDistance: 1
   connectionPoints:
   - {fileID: 3846612319416520089}

@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject journalMenu;
     public GameObject startCanvas;
+    public GameObject endGameMenu;
     
     [Header("Scenes")]
     public string loadScene0 = "MainMenu";

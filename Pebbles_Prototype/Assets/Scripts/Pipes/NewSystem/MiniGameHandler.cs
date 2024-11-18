@@ -16,10 +16,12 @@ public class MiniGameHandler : MonoBehaviour
 
     private bool _isEnabled;
     private bool _isFinished;
+    private bool _isComplete;
 
     private void Start()
     {
         _isFinished = false;
+        _isComplete = false;
     }
 
     private void OnEnable()
@@ -75,9 +77,14 @@ public class MiniGameHandler : MonoBehaviour
         {
             objectToActivate.SetActive(true);
         }
-        
-        
+
+        _isComplete = true;
         _isFinished = true;
+    }
+
+    public bool IsMiniGameFinished()
+    {
+        return _isComplete;
     }
 }
 
