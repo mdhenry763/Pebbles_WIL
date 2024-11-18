@@ -37,6 +37,7 @@ public class TutStateManager : MonoBehaviour
         _isEndGame = true;
 
         var score = miniGameScore.timeScore + (float)miniGameScore.miniGameScore + leakHandler.GetLeakScore();
+        timer.StopTime();
         
         OnGameEnd?.Invoke(score);
     }
