@@ -7,6 +7,8 @@ using UnityEngine.Rendering;
 
 public class InteractionArea : MonoBehaviour
 {
+    public SFXManager sfxManager;
+    
     private Node _pipeSource;
     private MiniGameHandler _miniGameHandler;
 
@@ -21,6 +23,7 @@ public class InteractionArea : MonoBehaviour
             _pipeSource.PipeToggle();
             //Event to control what happens to pipe, connection check, leak check rust check
             OnPipeToggled?.Invoke();
+            sfxManager.PlayValveClip();
         }
 
         if (_miniGameHandler != null)

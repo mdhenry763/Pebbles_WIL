@@ -13,6 +13,7 @@ public class TutStateManager : MonoBehaviour
     public TimeSystem timer;
     public MiniGameScore miniGameScore;
     public LeakHandler leakHandler;
+    public SFXManager soundManager;
 
     public static event Action<float> OnGameEnd;
     
@@ -40,5 +41,7 @@ public class TutStateManager : MonoBehaviour
         timer.StopTime();
         
         OnGameEnd?.Invoke(score);
+        
+        if(soundManager != null) soundManager.PlayWinSound();
     }
 }

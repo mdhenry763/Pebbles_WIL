@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
 
     
     #endregion
-
+    
     public void setMaxHealth(int health)
     {
         this.maxHealth = health;
@@ -55,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
         this.damage = damage;
     }
 
+    private SFXManager soundManager;
    
     // Start is called before the first frame update
     void Start()
@@ -63,11 +64,21 @@ public class EnemyHealth : MonoBehaviour
        _scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<Score>();
     }
 
+    private void OnEnable()
+    {
+        soundManager = FindObjectOfType<SFXManager>();
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Bullet")
         {
             takeDamage(1);
+
+            if (soundManager != null)
+            {
+                soundManager.PlayHitSound();
+            }
         }
 
         if (other.gameObject.tag == "BackWall")

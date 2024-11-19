@@ -69,6 +69,7 @@ public class Node : MonoBehaviour
 
         IsFlowing = !IsFlowing;
         ChangePipeColour();
+        
     }
 
     private void CheckConnection()

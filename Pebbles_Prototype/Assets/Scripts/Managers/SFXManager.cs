@@ -14,6 +14,12 @@ public class SFXManager : MonoBehaviour
     public AudioClip puzzleInteractClip;
     public AudioClip wrenchieClip;
     public AudioClip walkClip;
+    public AudioClip jumpClip;
+    public AudioClip buttonClip;
+    public AudioClip buttonEnterClip;
+    public AudioClip shootSound;
+    public AudioClip shootHit;
+    public AudioClip winSound;
 
     public void PlayValveClip()
     {
@@ -24,7 +30,36 @@ public class SFXManager : MonoBehaviour
     {
         audio.PlayOneShot(puzzleInteractClip);
     }
-    
+
+    public void PlayJumpSound()
+    {
+        audio.PlayOneShot(jumpClip);
+    }
+
+    public void PlayWinSound()
+    {
+        audio.PlayOneShot(winSound);
+    }
+
+    public void PlayBtnSound()
+    {
+        audio.PlayOneShot(buttonClip);
+    }
+
+    public void PlayEnterBtnSound()
+    {
+        audio.PlayOneShot(buttonEnterClip);
+    }
+
+    public void PlayShootSound()
+    {
+        audio.PlayOneShot(shootSound);
+    }
+
+    public void PlayHitSound()
+    {
+        audio.PlayOneShot(shootHit);
+    }
     
     public void PlayWrenchieClip()
     {

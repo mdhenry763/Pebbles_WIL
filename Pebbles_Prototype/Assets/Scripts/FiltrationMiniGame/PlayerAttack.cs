@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject Gun;
     public GameObject CarootShooter;
     public GameObject CarootIdle;
-    public AudioSource Shoot_Sound;
+    public SFXManager soundManager;
     Vector3 mousePos;
     Vector2 treeaim;
     Transform treeRotate;
@@ -40,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
                 GameObject bullet = Instantiate(CarootShooter, CarootIdle.transform.position, CarootIdle.transform.rotation);
                 magazine.Add(bullet);
+                soundManager.PlayShootSound();
                // SoundManager.Instance.playsound(Shoot_Sound.clip, Shoot_Sound) ;
 
             }

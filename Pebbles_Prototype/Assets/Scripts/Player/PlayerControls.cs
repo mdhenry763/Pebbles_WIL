@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
     public CinemachineVirtualCamera followCam;
     public PlayerEventSystemSO playerEvents;
     public GameObject wrenchie;
+    public SFXManager soundManager;
     
     [Header("Player Settings")]
     public float moveSpeed = 0.1f;
@@ -153,6 +154,7 @@ public class PlayerControls : MonoBehaviour
         Debug.Log("Jump now boy");
         var jumpVel = Vector3.up * jumpForce;
         _playerRb.velocity += jumpVel;
+        soundManager.PlayJumpSound();
     }
     
     private void OnDrawGizmosSelected()
