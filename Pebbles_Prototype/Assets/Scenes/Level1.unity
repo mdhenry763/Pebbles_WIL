@@ -1694,6 +1694,11 @@ PrefabInstance:
       objectReference: {fileID: 1225300102}
     - target: {fileID: 2615322423280124148, guid: 95faa3589d4649741868131325308b4f,
         type: 3}
+      propertyPath: moveSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615322423280124148, guid: 95faa3589d4649741868131325308b4f,
+        type: 3}
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 462260609}
