@@ -1762,6 +1762,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 437f4110918ef0a4aaab5321ad1c2c36, type: 3}
+--- !u!1 &287794903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 437f4110918ef0a4aaab5321ad1c2c36,
+    type: 3}
+  m_PrefabInstance: {fileID: 287794902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &314924290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +2613,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f873fb54091770b47a32ecb08585717e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &457562078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6774290925243221998, guid: c4bd03a7431aa0840a8bfe7f2b0d1d2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6952688936634419666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334caa91e846b3743ad6a9198dfc4051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &461202793
@@ -8243,6 +8261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572580d94fd7c284db94be3e62ed8dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wrenchieObject: {fileID: 287794903}
   wrenchieUI: {fileID: 568973418}
   header: {fileID: 1776977562}
   body: {fileID: 324332025}
@@ -12436,6 +12455,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3997338822273279713, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel1
+      objectReference: {fileID: 0}
     - target: {fileID: 4705249696698968148, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -12533,13 +12557,28 @@ PrefabInstance:
       objectReference: {fileID: 1408707338}
     - target: {fileID: 5114866896580915964, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
         type: 3}
+      propertyPath: loadScene1
+      value: TutorialLevel_Rework
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114866896580915964, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
+        type: 3}
       propertyPath: endGameMenu
       value: 
       objectReference: {fileID: 1654784255}
+    - target: {fileID: 5114866896580915964, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
+        type: 3}
+      propertyPath: leakHandler
+      value: 
+      objectReference: {fileID: 457562078}
     - target: {fileID: 5413570744827674846, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433644287256414660, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
+        type: 3}
+      propertyPath: m_text
+      value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 5805244557485471626, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
         type: 3}
@@ -12610,6 +12649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743987442360460420, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
+        type: 3}
+      propertyPath: m_Name
+      value: ContinueBtn
       objectReference: {fileID: 0}
     - target: {fileID: 7186527652068293647, guid: 43cf4dd3d36eefb4fb3ab9d17b696906,
         type: 3}
@@ -13115,6 +13159,11 @@ PrefabInstance:
       propertyPath: timeTakenText
       value: 
       objectReference: {fileID: 1746286507}
+    - target: {fileID: 2860680051592251396, guid: c4bd03a7431aa0840a8bfe7f2b0d1d2f,
+        type: 3}
+      propertyPath: m_Name
+      value: EndGameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 6774290925243221998, guid: c4bd03a7431aa0840a8bfe7f2b0d1d2f,
         type: 3}
       propertyPath: leakBar
@@ -13125,6 +13174,12 @@ PrefabInstance:
       propertyPath: leakText
       value: 
       objectReference: {fileID: 178354724599727001}
+    - target: {fileID: 6774290925243221998, guid: c4bd03a7431aa0840a8bfe7f2b0d1d2f,
+        type: 3}
+      propertyPath: playerEvents
+      value: 
+      objectReference: {fileID: 11400000, guid: 63e8f553db2b53c49804ee9968f56284,
+        type: 2}
     - target: {fileID: 6774290925243221998, guid: c4bd03a7431aa0840a8bfe7f2b0d1d2f,
         type: 3}
       propertyPath: pipeSections.Array.data[0].pipeEnd

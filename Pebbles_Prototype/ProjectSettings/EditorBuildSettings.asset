@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c58f4d2d4d4148f4b92af291a46a0ee0
   - enabled: 1
+    path: Assets/Scenes/TutorialLevel_Rework.unity
+    guid: 2fce0d7b3d605b14abf52f63c2d52e8b
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
     path: Assets/Scenes/BaseGameScene.unity
     guid: 3f2ad4c70efdfd84abe1a4c30e5631f6
   - enabled: 0
@@ -20,7 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Video.unity
     guid: d531eb82460dd9442b418829b4b74832
-  - enabled: 1
-    path: Assets/Scenes/TutorialLevel_Rework.unity
-    guid: 2fce0d7b3d605b14abf52f63c2d52e8b
   m_configObjects: {}

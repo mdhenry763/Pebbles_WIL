@@ -24,6 +24,8 @@ public class TutStateManager : MonoBehaviour
     private void Start()
     {
         _isEndGame = false;
+
+        miniGameScore.miniGameScore = 0;
     }
 
     private void Update()

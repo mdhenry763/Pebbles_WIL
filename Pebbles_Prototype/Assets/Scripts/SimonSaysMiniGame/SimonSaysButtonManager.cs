@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 public class SimonSaysButtonManager : MonoBehaviour
 {
     public GameManager _GameManager;
-    public List<SimonSaysButton> buttons; 
+    public List<SimonSaysButton> buttons;
+    public MiniGameScore miniGame;
     private List<int> pattern = new List<int>();
     public int currentStep;
     public float currentScore;
@@ -79,6 +80,7 @@ public class SimonSaysButtonManager : MonoBehaviour
         {
             if(soundManager != null) soundManager.PlayBtnSound();
             currentStep++;
+            miniGame.miniGameScore = currentStep * 10;
             
             if (currentStep >= pattern.Count)
             {

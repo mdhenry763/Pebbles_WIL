@@ -19,7 +19,9 @@ public class LeakHandler : MonoBehaviour
     public TMP_Text leakText;
 
     private float _leakScore = 80;
-    private bool _isLeaking;
+    private bool _canLeak;
+    
+    
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class LeakHandler : MonoBehaviour
 
         _leakScore = leakScoreMax;
     }
+    
 
     public float GetLeakScore()
     {
@@ -35,6 +38,8 @@ public class LeakHandler : MonoBehaviour
 
     private void Update()
     {
+        if(_canLeak) return;
+        
         foreach (var pipeSection in pipeSections)
         {
             if (pipeSection.pipeStart.IsFlowing && pipeSection.pipeEnd.IsClosed)
@@ -56,9 +61,18 @@ public class LeakHandler : MonoBehaviour
                 if(leakText == null) return;
 
                 leakText.text = "Leaking";
-                Debug.Log("Leaking");
             }
         }
+    }
+
+    public void StartLeakSystem()
+    {
+        _canLeak = false;
+    }
+
+    public void StopLeakSystem()
+    {
+        _canLeak = true;
     }
 
     private bool CheckIfPipesConnected()

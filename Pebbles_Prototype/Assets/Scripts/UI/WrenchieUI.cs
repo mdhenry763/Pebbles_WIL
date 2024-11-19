@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class WrenchieUI : MonoBehaviour
 {
+    public GameObject wrenchieObject;
     public GameObject wrenchieUI;
     public TMP_Text header;
     public TMP_Text body;
@@ -22,6 +23,8 @@ public class WrenchieUI : MonoBehaviour
             
             playerEvents.FireWrenchieEvent();
             playerEvents.FireUIEvent(true);
+            
+            wrenchieObject.SetActive(false);
 
             if (other.TryGetComponent<MovementTest>(out var test))
             {

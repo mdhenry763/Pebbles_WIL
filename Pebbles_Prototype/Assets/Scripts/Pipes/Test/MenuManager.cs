@@ -12,7 +12,9 @@ public class MenuManager : MonoBehaviour
     public GameObject startCanvas;
     public GameObject endGameMenu;
 
-    [Header("Timer")] public TimeSystem timer;
+    [Header("Managers")] 
+    public TimeSystem timer;
+    public LeakHandler leakHandler;
     
     [Header("Scenes")]
     public string loadScene0 = "MainMenu";
@@ -56,6 +58,7 @@ public class MenuManager : MonoBehaviour
                 break;
         }
         
+        leakHandler.StopLeakSystem();
         timer.StopTime();
     }
 
@@ -64,6 +67,7 @@ public class MenuManager : MonoBehaviour
         pauseMenu.SetActive(false);
         journalMenu.SetActive(false);
         
+        leakHandler.StartLeakSystem();
         timer.StartTime();
         
         if(!startCanvas.activeSelf)
@@ -78,6 +82,11 @@ public class MenuManager : MonoBehaviour
     public void LoadScene1()
     {
         SceneManager.LoadScene(loadScene1);
+    }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
