@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TutStateManager : MonoBehaviour
 {
@@ -43,10 +44,30 @@ public class TutStateManager : MonoBehaviour
 
         var score = miniGameScore.timeScore + (float)miniGameScore.miniGameScore + leakHandler.GetLeakScore();
         timer.StopTime();
+        leakHandler.StopLeakSystem();
         
         OnGameEnd?.Invoke(score);
-        
         onGameEnded?.Invoke();
+        
         if(soundManager != null) soundManager.PlayWinSound();
+        
+        UpdateGameManager(score);
+    }
+
+    private void UpdateGameManager(float score)
+    {
+        if(GameManager.Instance == null) return;
+
+        if (SceneManager.GetActiveScene().name == "TutorialLevel_Rework")
+        {
+            GameManager.Instance.UpdateScore(0, score);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            GameManager.Instance.UpdateScore(1, score);
+        }
+        
+        
     }
 }
