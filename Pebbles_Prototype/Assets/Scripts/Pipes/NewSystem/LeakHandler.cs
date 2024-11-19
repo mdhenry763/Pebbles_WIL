@@ -23,7 +23,7 @@ public class LeakHandler : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(RustNode());
+        //StartCoroutine(RustNode());
 
         _leakScore = leakScoreMax;
     }

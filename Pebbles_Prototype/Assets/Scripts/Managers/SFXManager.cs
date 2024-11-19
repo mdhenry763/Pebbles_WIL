@@ -20,6 +20,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip shootSound;
     public AudioClip shootHit;
     public AudioClip winSound;
+    public AudioClip errorSound;
 
     public void PlayValveClip()
     {
@@ -44,6 +45,11 @@ public class SFXManager : MonoBehaviour
     public void PlayBtnSound()
     {
         audio.PlayOneShot(buttonClip);
+    }
+
+    public void PlayErrorSound()
+    {
+        audio.PlayOneShot(errorSound);
     }
 
     public void PlayEnterBtnSound()

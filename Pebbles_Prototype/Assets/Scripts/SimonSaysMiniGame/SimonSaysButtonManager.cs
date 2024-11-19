@@ -15,6 +15,7 @@ public class SimonSaysButtonManager : MonoBehaviour
     private bool isPlayerTurn = false;
     public float lightUpDuration = 0.5f;
     public SimonSaysUIManager _SimonSaysUIManager;
+    public SFXManager soundManager;
     
     //Events
     public static event Action OnMiniGameComplete;
@@ -54,11 +55,13 @@ public class SimonSaysButtonManager : MonoBehaviour
         foreach (int index in pattern)
         {
             buttons[index].LightUp();
+            if(soundManager != null) soundManager.PlayBtnSound();
             yield return new WaitForSeconds(lightUpDuration); // Duration for each light-up
             buttons[index].ResetLight();
             yield return new WaitForSeconds(0.3f); // Pause between lights
         }
 
+        if(soundManager != null) soundManager.PlayEnterBtnSound();
         isPlayerTurn = true;
     }
 
@@ -74,6 +77,7 @@ public class SimonSaysButtonManager : MonoBehaviour
 
         if (index == pattern[currentStep])
         {
+            if(soundManager != null) soundManager.PlayBtnSound();
             currentStep++;
             
             if (currentStep >= pattern.Count)
@@ -92,8 +96,10 @@ public class SimonSaysButtonManager : MonoBehaviour
         }
         else
         {
+            if(soundManager != null) soundManager.PlayErrorSound();
             GameOver();
             Debug.Log("Incorrect! Game Over!");
+            
             // Optionally reset the game or end
         }
     }

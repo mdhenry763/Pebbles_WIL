@@ -2623,8 +2623,8 @@ RectTransform:
   m_LocalScale: {x: 1.7337, y: 1.7337, z: 1.7337}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5042023948459458429}
   - {fileID: 3077236230220335493}
+  - {fileID: 5042023948459458429}
   m_Father: {fileID: 2742559968534440386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -6740,6 +6740,7 @@ MonoBehaviour:
   journalMenu: {fileID: 6406066686693706764}
   startCanvas: {fileID: 1535844414012917404}
   endGameMenu: {fileID: 0}
+  timer: {fileID: 0}
   loadScene0: MainMenu
   loadScene1: MichaelSandbox
   playerEvents: {fileID: 11400000, guid: 63e8f553db2b53c49804ee9968f56284, type: 2}
