@@ -101,6 +101,11 @@ public class Node : MonoBehaviour
         {
             IsClosed = false;
         }
+
+        if (Type == PipeType.Continuous && connectionPoint.IsFlowing)
+        {
+            IsFlowing = true;
+        }
         
         //CrossSceneEvents.FireOnConnectionChange();
         

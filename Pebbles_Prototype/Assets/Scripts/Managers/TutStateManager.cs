@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TutStateManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TutStateManager : MonoBehaviour
     public SFXManager soundManager;
 
     public static event Action<float> OnGameEnd;
+    public UnityEvent onGameEnded;
     
     private bool _isEndGame;
 
@@ -42,6 +44,7 @@ public class TutStateManager : MonoBehaviour
         
         OnGameEnd?.Invoke(score);
         
+        onGameEnded?.Invoke();
         if(soundManager != null) soundManager.PlayWinSound();
     }
 }

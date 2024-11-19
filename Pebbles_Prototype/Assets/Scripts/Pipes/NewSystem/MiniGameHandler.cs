@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGameHandler : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class MiniGameHandler : MonoBehaviour
     private bool _isEnabled;
     private bool _isFinished;
     private bool _isComplete;
+
+    public UnityEvent onActivateMiniGame;
 
     private void Start()
     {
@@ -67,6 +70,8 @@ public class MiniGameHandler : MonoBehaviour
         Level.SetActive(false);
         MiniGame.SetActive(true);
         _isFinished = true;
+        
+        onActivateMiniGame?.Invoke();
     }
 
     private void MiniGameFinished()

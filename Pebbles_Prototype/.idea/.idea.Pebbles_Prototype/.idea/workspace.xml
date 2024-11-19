@@ -7,9 +7,10 @@
     <list default="true" id="491f617a-fad8-4b89-9f4f-08a387406987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pebbles_Prototype/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SFXManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SFXManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/LeakHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/LeakHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimonSaysMiniGame/SimonSaysButtonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimonSaysMiniGame/SimonSaysButtonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TutStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TutStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/MiniGameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pipes/NewSystem/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerControls.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

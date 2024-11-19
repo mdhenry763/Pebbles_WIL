@@ -104,7 +104,7 @@ public class PlayerControls : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void UnlockCursor()
+    public void UnlockCursor()
     {
         followCam.enabled = false;
         moveSpeed = 0;
