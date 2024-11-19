@@ -6,7 +6,7 @@ using UnityEngine;
 public class JournalManager : MonoBehaviour
 {
     public GameManager _GameManager;
-    public TMP_Text tutorialConservation, tutorialSource, tutorialTreatment;
+    public TMP_Text tutorialConservation, tutorialSource, tutorialTreatment, level1Conservation, level1Source, level1Treatment;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,21 @@ public class JournalManager : MonoBehaviour
            
         }
 
+        if (_GameManager.level1Score > 10)
+        {
+            level1Source.text = 
+                "Clean water is stored in large tanks called reservoirs. These keep the water safe and ready to be sent to our homes. Think of reservoirs as giant water bottles that store clean water until we need it.";
+             if(_GameManager.level1Score >= 50)
+             {
+                 level1Treatment.text =
+                     "From a dam, water goes to a water treatment plant. Here, the water is cleaned and purified. The plant removes dirt, germs, and other harmful substances to make the water safe to drink.";
+                 if (_GameManager.level1Score >= 80)
+                 {
+                     level1Conservation.text =
+                         "Make sure to water plants early in the morning or late in the evening. Watering your plants during the cooler parts of the day reduces water evaporation. This means more water can reach the roots while using less water! It's a simple way to be more efficient with your garden's water use.";
+                 }
+             }
+        }
         
     }
     // Update is called once per frame
