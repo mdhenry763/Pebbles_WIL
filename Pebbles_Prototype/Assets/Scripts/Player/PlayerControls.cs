@@ -144,7 +144,7 @@ public class PlayerControls : MonoBehaviour
         move.y = 0;
 
         //if(!isGrounded) return;
-        transform.Translate(move * moveSpeed);
+        transform.Translate(move * moveSpeed * Time.deltaTime);
         //_playerRb.velocity += move * moveSpeed;
     }
 
