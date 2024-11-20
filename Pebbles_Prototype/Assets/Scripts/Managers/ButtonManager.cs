@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameManager _GameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _GameManager = GameManager.Instance;
     }
 
     public void UpdateJournal()
     {
-        GameManager.Instance._JournalManager.UpdateJournalText();
+        _GameManager._JournalManager =
+            GameObject.FindGameObjectWithTag("JournalManager").GetComponent<JournalManager>();
+        _GameManager._JournalManager.UpdateJournalText();
     }
     public void LoadFiltrationMiniGame()
     {
