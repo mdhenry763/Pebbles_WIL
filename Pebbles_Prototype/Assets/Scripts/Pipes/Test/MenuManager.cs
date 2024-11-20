@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
 
     private void OnEnable()
     {
+        
         playerEvents.OnShowMenu += HandleShowMenuCalled;
         TutStateManager.OnGameEnd += HandleGameEnd;
     }

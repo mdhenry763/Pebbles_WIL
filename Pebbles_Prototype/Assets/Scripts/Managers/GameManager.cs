@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        //_JournalManager = GameObject.FindGameObjectWithTag("JournalManager").GetComponent<JournalManager>();
+        _JournalManager = GameObject.FindGameObjectWithTag("JournalManager").GetComponent<JournalManager>();
         tutorialScore = 100;
         temperatureMiniGameScore = 0;
         level1Score = 0;
