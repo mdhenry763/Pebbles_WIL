@@ -52,7 +52,6 @@ public class LeakHandler : MonoBehaviour
             {
                 //Leaking
                 _leakScore -= Time.deltaTime * leakMultiplier;
-                Debug.Log(_leakScore);
                 
                 if(leakBar == null) return;
 

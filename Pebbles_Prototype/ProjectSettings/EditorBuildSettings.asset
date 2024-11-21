@@ -15,15 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/Video.unity
+    guid: d531eb82460dd9442b418829b4b74832
+  - enabled: 0
     path: Assets/Scenes/BaseGameScene.unity
     guid: 3f2ad4c70efdfd84abe1a4c30e5631f6
   - enabled: 0
     path: Assets/Scenes/FiltrationMiniGame.unity
     guid: 2a9e87f9844e38749bad2bf443960948
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialLevel.unity
     guid: 7ca127dfcd0f52141b04718d015241b1
-  - enabled: 1
-    path: Assets/Scenes/Video.unity
-    guid: d531eb82460dd9442b418829b4b74832
   m_configObjects: {}
